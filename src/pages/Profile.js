@@ -45,18 +45,19 @@ class Profile extends Component {
   }
 
   getFavorites = async () => {
-    try {
-      let favoritesUrl = `${process.env.REACT_APP_SERVER}/favorites`
-      console.log('favoritesUrl: ', favoritesUrl)
-      let favoritesData = await axios.get(favoritesUrl)
+    console.log('getFavorites')
+    // try {
+    //   let favoritesUrl = `${process.env.REACT_APP_SERVER}/favorites`
+    //   console.log('favoritesUrl: ', favoritesUrl)
+    //   let favoritesData = await axios.get(favoritesUrl)
 
-      this.setState({
-          favoriteLocations: favoritesData.data
-      })
+    //   this.setState({
+    //       favoriteLocations: favoritesData.data
+    //   })
 
-    } catch(error) {
-      console.log("Get Favorites Error: ", error.response)
-    }
+    // } catch(error) {
+    //   console.log("Get Favorites Error: ", error.response)
+    // }
   }
 
   handleUpdate = () => {
@@ -66,7 +67,7 @@ class Profile extends Component {
 
   handleDelete = () => {
     console.log('delete locatoin')
-    
+
   }
 
   componentDidMount() {
