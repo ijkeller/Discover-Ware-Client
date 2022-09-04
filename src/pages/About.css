@@ -1,0 +1,19 @@
+.about-container {
+    display: grid !important;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    gap: 2rem;
+    margin: 1rem;
+}
+
+.card {
+    border: 1px solid black !important;
+    width: 30rem !important;
+    height: 25rem !important;
+    padding: 10px;
+}
+
+.title {
+    justify-self: center;
+    align-self: center;
+}

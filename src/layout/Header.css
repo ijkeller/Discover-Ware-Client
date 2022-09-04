@@ -1,10 +1,23 @@
+.Header {
+  background-color: hsl(0, 0%, 80%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom-right-radius: .5rem;
+  border-bottom-left-radius: .5rem;
+}
+
 .icon {
-  width: 1rem;
+  width: 1.2rem;
   height: auto;
 }
 
 #profile-icon {
-  width: 1.3rem;
+  width: 1.5rem;
   height: auto;
+}
+
+.search {
+  width: 30rem !important;
 }
 

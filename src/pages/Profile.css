@@ -1,0 +1,27 @@
+.profile-container {
+    display: grid;
+    grid-template-rows: 35% 65%;
+}
+
+.favorite-locations {
+    display: block;
+}
+
+.favorites-card {
+    display: grid;
+
+    border: 1px solid black;
+    width: 100%;
+    height: 10rem;
+}
+
+.favorites-card {
+    display: block;
+}
+
+.location-image {
+    float: right;
+    justify-self: center;
+    width: auto;
+    height: 7rem;
+}

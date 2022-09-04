@@ -13,8 +13,8 @@ class Header extends React.Component {
   render() {
     return (
       <header className='Header'>
-        <h1>DiscoverWare</h1>
-        <Form.Control type='search'></Form.Control>
+        <h2>DiscoverWare</h2>
+        <Form.Control type='search' placeholder='Search' className='search'></Form.Control>
         <Navbar collapseOnSelect expand="lg" variant="secondary">
           <Container>
             <Navbar.Brand></Navbar.Brand>
