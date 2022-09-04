@@ -7,12 +7,15 @@ import { ReactComponent as ProfileIcon } from '../svg/person-circle-svgrepo-com.
 import { ReactComponent as AboutIcon } from '../svg/question-svgrepo-com.svg';
 import { NavLink } from "react-router-dom";
 import './Header.css';
+import Form from 'react-bootstrap/Form';
 
 class Header extends React.Component {
   render() {
     return (
       <header className='Header'>
-        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+        <h1>DiscoverWare</h1>
+        <Form.Control type='search'></Form.Control>
+        <Navbar collapseOnSelect expand="lg" variant="secondary">
           <Container>
             <Navbar.Brand></Navbar.Brand>
             <Nav>
