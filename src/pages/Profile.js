@@ -2,7 +2,7 @@ import { Component } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import { ReactComponent as HomeIcon } from '../svg/home-svgrepo-com.svg';
-import axios from 'axios';
+// import axios from 'axios';
 import './Profile.css';
 
 class Profile extends Component {
