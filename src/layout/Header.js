@@ -6,6 +6,8 @@ import { ReactComponent as HomeIcon } from '../svg/home-svgrepo-com.svg';
 import { ReactComponent as ProfileIcon } from '../svg/person-circle-svgrepo-com.svg';
 import { ReactComponent as AboutIcon } from '../svg/question-svgrepo-com.svg';
 import { NavLink } from "react-router-dom";
+import Login from '../components/Login.js'
+import Logout from '../components/Logout.js'
 import './Header.css';
 import Form from 'react-bootstrap/Form';
 
@@ -15,7 +17,7 @@ class Header extends Component {
       <header className='Header'>
         <h2>DiscoverWare</h2>
         <Form.Control type='search' placeholder='Search' className='search'></Form.Control>
-        <Navbar collapseOnSelect expand="lg" variant="secondary">
+        <Navbar expand="lg" variant="secondary">
           <Container>
             <Navbar.Brand></Navbar.Brand>
             <Nav>
@@ -31,6 +33,8 @@ class Header extends Component {
             </Nav>
           </Container>
         </Navbar>
+        <Login />
+        <Logout />
       </header>
     )
   }
