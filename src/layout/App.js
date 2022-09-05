@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Map from '../pages/Map';
@@ -12,7 +12,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 
-class App extends React.Component {
+class App extends Component {
 
   render() {
     return (
@@ -22,17 +22,17 @@ class App extends React.Component {
           <Routes>
             <Route
               exact path="/"
-              element={<Map/>}
+              element={<Map />}
             >
             </Route>
             <Route
               exact path="/profile"
-              element={<Profile/>}
+              element={<Profile />}
             >
             </Route>
             <Route
               exact path="/about"
-              element={<About/>}>
+              element={<About />}>
             </Route>
           </Routes>
           <Footer />

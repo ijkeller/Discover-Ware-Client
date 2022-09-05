@@ -1,9 +1,9 @@
-import { Component } from "react";
+import { Component } from 'react'
+import MapContainer from '../components/MapContainer';
 
 class Map extends Component {
-
   render() {
-    return (<>Map</>);
+    return <MapContainer />
   }
 }
 
