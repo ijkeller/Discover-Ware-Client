@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 import './Header.css';
 import Form from 'react-bootstrap/Form';
 
-class Header extends React.Component {
+class Header extends Component {
   render() {
     return (
       <header className='Header'>
