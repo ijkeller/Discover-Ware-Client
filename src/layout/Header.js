@@ -15,7 +15,7 @@ class Header extends Component {
       <header className='Header'>
         <h2>DiscoverWare</h2>
         <Form.Control type='search' placeholder='Search' className='search'></Form.Control>
-        <Navbar collapseOnSelect expand="lg" variant="secondary">
+        <Navbar expand="lg" variant="secondary">
           <Container>
             <Navbar.Brand></Navbar.Brand>
             <Nav>

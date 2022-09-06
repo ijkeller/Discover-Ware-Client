@@ -12,3 +12,7 @@
 - [Front-End](https://github.com/DiscoveryChannel301/discoverware)
 - [Backend](https://github.com/DiscoveryChannel301/discoverware-api)
 
+**Deployed Links**:
+- [Netlify](https://discoverware.netlify.app/)
+- [Heroku](https://discoverware-backend.herokuapp.com/)
+
