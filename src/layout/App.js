@@ -13,7 +13,7 @@ import {
 import './App.css';
 
 class App extends Component {
-
+  
   render() {
     return (
       <>
@@ -22,17 +22,15 @@ class App extends Component {
           <Routes>
             <Route
               exact path="/"
-              element={<Map />}
-            >
+              element={<Map />} >
             </Route>
             <Route
               exact path="/profile"
-              element={<Profile />}
-            >
+              element={<Profile />} >
             </Route>
             <Route
               exact path="/about"
-              element={<About />}>
+              element={<About />} >
             </Route>
           </Routes>
           <Footer />

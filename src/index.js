@@ -9,7 +9,7 @@ root.render(
   // <React.StrictMode>
   //   <App />
   // </React.StrictMode>
-    <Auth0Provider
+  <Auth0Provider
     domain={process.env.REACT_APP_DOMAIN}
     clientId={process.env.REACT_APP_CLIENTID}
     redirectUri={window.location.origin}

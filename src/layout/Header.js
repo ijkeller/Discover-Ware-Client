@@ -6,8 +6,6 @@ import { ReactComponent as HomeIcon } from '../svg/home-svgrepo-com.svg';
 import { ReactComponent as ProfileIcon } from '../svg/person-circle-svgrepo-com.svg';
 import { ReactComponent as AboutIcon } from '../svg/question-svgrepo-com.svg';
 import { NavLink } from "react-router-dom";
-import Login from '../components/Login.js'
-import Logout from '../components/Logout.js'
 import './Header.css';
 import Form from 'react-bootstrap/Form';
 
@@ -33,8 +31,6 @@ class Header extends Component {
             </Nav>
           </Container>
         </Navbar>
-        <Login />
-        <Logout />
       </header>
     )
   }

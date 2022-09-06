@@ -15,27 +15,6 @@ class Content extends React.Component {
                     lat: 'numbers',
                     lon: 'numbers',
                     placeimage: 'image'
-                },
-                {
-                    placename: 'Place Name',
-                    type: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    lat: 'numbers',
-                    lon: 'numbers',
-                    placeimage: 'image'
-                },
-                {
-                    placename: 'Place Name',
-                    type: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    lat: 'numbers',
-                    lon: 'numbers',
-                    placeimage: 'image'
-                },
-                {
-                    placename: 'Place Name',
-                    type: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    lat: 'numbers',
-                    lon: 'numbers',
-                    placeimage: 'image'
                 }
             ]
         }
@@ -53,12 +32,12 @@ class Content extends React.Component {
                 headers: { "Authorization": `Bearer ${jwt}` },
                 method: 'get',
                 baseURL: process.env.REACT_APP_SERVER,
-                url: '/books'
+                url: ''
             }
 
-            const booksResponse = await axios(config);
+            const profileResponse = await axios(config);
 
-            console.log('Books from DB: ', booksResponse.data);
+            console.log('favorites from DB: ', profileResponse.data);
 
             this.setState({
                 // name: 'name',
