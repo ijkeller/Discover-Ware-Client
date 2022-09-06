@@ -1,9 +1,11 @@
 import { Component } from 'react';
+import { withAuth0 } from '@auth0/auth0-react';
 import Header from './Header';
 import Footer from './Footer';
 import Map from '../pages/Map';
 import Profile from '../pages/Profile';
 import About from '../pages/About';
+// import Login from '../components/Login'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
@@ -40,4 +42,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withAuth0(App);

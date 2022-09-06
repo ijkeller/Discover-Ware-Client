@@ -1,5 +1,5 @@
 import { Component } from "react";
-// import { withAuth0 } from '@auth0/auth0-react';
+import { withAuth0 } from '@auth0/auth0-react';
 // import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
@@ -56,25 +56,24 @@ class Profile extends Component {
   }
 
   handleDelete = () => {
-    console.log('delete locatoin')
+    console.log('delete location')
 
   }
 
-  componentDidMount() {
-    // this.getFavorites();
-  }
+  // componentDidMount() {
+  //   this.getFavorites();
+  // }
 
   render() {
     return (
       <>
 
-        <Login />
-        <Logout />
         {
-          this.props.isAuthenticated
+          this.props.auth0.isAuthenticated
             ?
             <div className="profile-container" >
               <div className="profile-information" >
+                <Logout />
                 <h3>Profile Information</h3>
                 <Form>
                   <Form.Group >
@@ -107,11 +106,14 @@ class Profile extends Component {
               </div>
             </div>
             :
-            false
+            <>
+              <Login />
+              <h1>Not Authenticated</h1>
+            </>
         }
       </>
     );
   }
 }
 
-export default Profile;
+export default withAuth0(Profile);
