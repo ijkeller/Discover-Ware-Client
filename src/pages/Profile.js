@@ -31,7 +31,6 @@ class Profile extends Component {
     }
   }
 
-
   async componentDidMount() {
 
     if (this.props.auth0.isAuthenticated) {
@@ -52,7 +51,7 @@ class Profile extends Component {
       console.log('favorites from DB: ', profileResponse.data);
 
       this.setState({
-
+        favoriteLocations: profileResponse.data
       })
     }
   }
@@ -102,7 +101,6 @@ class Profile extends Component {
   render() {
     return (
       <>
-
         {
           this.props.auth0.isAuthenticated
             ?
