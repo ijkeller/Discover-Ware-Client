@@ -13,8 +13,10 @@
     },
     {
         "personName": "Jacob Dang",
-        "personData": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "person_Img": ""
+        "personData": "Formerly self-taught and currently a full stacked developer through Code Fellows intermediate software program",
+        "person_Img": "profilepictureJD.jpg",
+        "GitHub":"https://github.com/JacobDangCS50",
+        "LinkedIn": "https://www.linkedin.com/in/jacob-dang-a19210209"
     },
     {
         "personName": "Tim Traylor",
