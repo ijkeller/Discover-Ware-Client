@@ -5,19 +5,18 @@ import Container from 'react-bootstrap/Container';
 import { ReactComponent as HomeIcon } from '../svg/home-svgrepo-com.svg';
 import { ReactComponent as ProfileIcon } from '../svg/person-circle-svgrepo-com.svg';
 import { ReactComponent as AboutIcon } from '../svg/question-svgrepo-com.svg';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import './Header.css';
-import Form from 'react-bootstrap/Form';
+import Places from '../components/Places';
 
 class Header extends Component {
   render() {
     return (
       <header className='Header'>
         <h2>DiscoverWare</h2>
-        <Form.Control type='search' placeholder='Search' className='search'></Form.Control>
-        <Navbar collapseOnSelect expand="lg" variant="secondary">
+        <Places savePlace={this.props.savePlace}/>
+        <Navbar expand="lg" variant="secondary">
           <Container>
-            <Navbar.Brand></Navbar.Brand>
             <Nav>
               <Nav.Link as={NavLink} to="/" className="nav-link">
                 <HomeIcon className='icon' />
