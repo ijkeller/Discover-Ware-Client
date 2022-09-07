@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { withAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
-import Form from 'react-bootstrap/Form';
+// import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import Login from '../components/Login.js'
 import Logout from '../components/Logout.js'
@@ -16,7 +16,9 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'email',
+      name: '-------',
+      email: '-------',
+      picture: '-------',
       favoriteLocations: [
         {
           name: 'name',
@@ -53,7 +55,10 @@ class Profile extends Component {
       console.table(profileResponse.data)
 
       this.setState({
-        favoriteLocations: profileResponse.data
+        favoriteLocations: profileResponse.data,
+        name: res.name,
+        email: res.email,
+        picture: res.picture
       })
     }
   }
@@ -125,7 +130,10 @@ class Profile extends Component {
               <div className="profile-information" >
                 <Logout />
                 <h3>Profile Information</h3>
-                <Form>
+                <h4>{this.state.name}</h4>
+                <p>{this.state.email}</p>
+                <img src={this.state.picture} alt={` - ${this.state.name} - pic`} />
+                {/* <Form>
                   <Form.Group >
                     <Form.Label>Name:</Form.Label>
                     <Form.Control type="text" placeholder="Enter Name" >
@@ -136,7 +144,7 @@ class Profile extends Component {
                     <Form.Label>Bio: </Form.Label>
                     <Form.Control type="textarea" rows={4}></Form.Control>
                   </Form.Group>
-                </Form>
+                </Form> */}
               </div>
               <div className="favorite-locations" >
                 <h3>Favorite Locations</h3>
