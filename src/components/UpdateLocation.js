@@ -23,12 +23,15 @@ export default class UpdateLocation extends React.Component {
         e.preventDefault();
         let locationToUpdate = {
             _id: this.props.location._id,
-            placename: this.props.location.placename,
-            type: this.props.location.type,
-            notes: e.target.notes.value || this.props.location.notes,
+            email: this.props.location.email,
+            name: this.props.location.name,
+            address: this.props.location.address,
+            // notes: e.target.note.value || this.props.location.notes,
+            image: this.props.location.image,
+            types: this.props.location.types,
             lat: this.props.location.lat,
-            lon: this.props.location.lon,
-            placeimage: this.props.location.placeimage,
+            lng: this.props.location.lng,
+            place_id: this.props.location.place_id,
             __v: this.props.location.__v
         }
         this.props.handleUpdate(locationToUpdate)
@@ -44,7 +47,7 @@ export default class UpdateLocation extends React.Component {
                     <Modal.Body>
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group className="mb-3" controlId="notes">
-                                <Form.Control type="text" placeholder='Notes' />
+                                <Form.Control type="text" placeholder='Edit Notes' />
                             </Form.Group>
                             <Button variant="secondary" type="submit" onClick={this.handleClose} >Submit</Button>
                         </Form>

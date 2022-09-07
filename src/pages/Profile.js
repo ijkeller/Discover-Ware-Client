@@ -17,17 +17,13 @@ class Profile extends Component {
     super(props);
     this.state = {
       email: 'email',
-      bio: 'bio',
-      favoriteLocations: [
-        {
-          placename: 'Place Name',
-          type: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          notes: 'notes',
-          lat: 'numbers',
-          lon: 'numbers',
-          placeimage: 'image'
-        }
-      ]
+      name: 'name',
+      address: 'address',
+      image: 'image',
+      types: ['type', 'type'],
+      lat: 45,
+      lng: 54,
+      place_id: 7524
     }
   }
 
@@ -43,7 +39,7 @@ class Profile extends Component {
         headers: { "Authorization": `Bearer ${jwt}` },
         method: 'get',
         baseURL: SERVER,
-        url: '/profile'
+        url: '/place'
       }
 
       const profileResponse = await axios(config);
@@ -56,45 +52,58 @@ class Profile extends Component {
     }
   }
 
+  getLocations = async () => {
+    try {
+      let getLocationData = await axios.get(`${SERVER}/place`)
+      this.setState({ favoriteLocations: getLocationData.data })
+    } catch (error) {
+      console.log("Get Error: ", error.response)
+    }
+  }
+
   handleUpdate = async (locationToUpdate) => {
     try {
-      let locationUrl = `${SERVER}/profile`;
+      let locationUrl = `${SERVER}/place`;
       console.log('locationUrl: ', locationUrl);
       let updatedLocation = await axios.put(locationUrl, locationToUpdate);
-      
+
       console.log('updatedLocation: ')
       console.table(updatedLocation)
+    
+      this.getLocations()
 
-      let updatedLocationsArray = this.state.favoriteLocations.map(origLocation => {
-        return origLocation._id === locationToUpdate._id
-        ? updatedLocation.data
-        : origLocation
-      });
-      this.setState({
-        favoriteLocations: updatedLocationsArray
-      })
+      // let updatedLocationsArray = this.state.favoriteLocations.map(origLocation => {
+      //   return origLocation._id === locationToUpdate._id
+      //     ? updatedLocation.data
+      //     : origLocation
+      // });
+      // this.setState({
+      //   favoriteLocations: updatedLocationsArray
+      // })
 
-    }catch(error) {
-      console.log('Update Error: ', error)
+    } catch (error) {
+      console.log('Update Error: ', error.response)
     }
   }
 
   handleDelete = async (locationToDelete) => {
     try {
       console.log('locationToDelete: ', locationToDelete);
-      const locationToDeleteResponse = await axios.delete(`${SERVER}/profile/${locationToDelete._id}`);
+      const locationToDeleteResponse = await axios.delete(`${SERVER}/place/${locationToDelete._id}`);
       console.log('response status: ', locationToDeleteResponse.status);
 
-      const filterLocations = this.state.favoriteLocations.filter(location => {
-        return location._id !== locationToDelete._id;
-      })
+      this.getLocations();
 
-      this.setState({
-        favoriteLocations: filterLocations
-      })
+      // const filterLocations = this.state.favoriteLocations.filter(location => {
+      //   return location._id !== locationToDelete._id;
+      // })
 
-    }catch(error) {
-      console.log('Delete Error: ', error)
+      // this.setState({
+      //   favoriteLocations: filterLocations
+      // })
+
+    } catch (error) {
+      console.log('Delete Error: ', error.response)
     }
   }
 
@@ -127,9 +136,12 @@ class Profile extends Component {
                   this.state.favoriteLocations.map((location, idx) => {
                     return (
                       <div className="favorites-card" key={idx} >
-                        <h3 className="location-name">{location.placename}</h3>
+                        <h3 className="location-name">{location.name}</h3>
+                        <p className="address" >{location.address}</p>
+                        {/* <p className="notes" >{location.notes}</p> */}
+                        <p className="location-type">{location.types.split(', ')}</p>
                         <HomeIcon className="location-image" />
-                        <p className="location-type">{location.type}</p>
+                        {/* <img src={location.image} alt={location.name} /> */}
                         <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
                         <Button onClick={this.handleDelete} variant="secondary" >Delete Location</Button>
                       </div>
