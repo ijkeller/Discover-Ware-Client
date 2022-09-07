@@ -6,8 +6,8 @@ class Content extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: 'name',
-            bio: 'bio',
+            email: 'email',
+            notes: 'notes',
             favoriteLocations: [
                 {
                     placename: 'Place Name',
@@ -40,38 +40,7 @@ class Content extends React.Component {
             console.log('favorites from DB: ', profileResponse.data);
 
             this.setState({
-                // name: 'name',
-                // bio: 'bio',
-                // favoriteLocations: [
-                //     {
-                //         placename: 'Place Name',
-                //         type: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                //         lat: 'numbers',
-                //         lon: 'numbers',
-                //         placeimage: 'image'
-                //     },
-                //     {
-                //         placename: 'Place Name',
-                //         type: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                //         lat: 'numbers',
-                //         lon: 'numbers',
-                //         placeimage: 'image'
-                //     },
-                //     {
-                //         placename: 'Place Name',
-                //         type: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                //         lat: 'numbers',
-                //         lon: 'numbers',
-                //         placeimage: 'image'
-                //     },
-                //     {
-                //         placename: 'Place Name',
-                //         type: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                //         lat: 'numbers',
-                //         lon: 'numbers',
-                //         placeimage: 'image'
-                //     }
-                // ]
+                
             })
         }
     }

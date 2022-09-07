@@ -2,13 +2,13 @@ import { Component } from "react";
 // import Card from "react-bootstrap/Card"
 import { ReactComponent as ProfileIcon } from '../svg/person-circle-svgrepo-com.svg';
 import './About.css';
-import Data from '../Assets/personalinfo.json'
+import Data from '../assets/personalinfo.json'
 
 class About extends Component {
 
 
   personImg = ProfileIcon
-  
+
 
   render() {
     return (

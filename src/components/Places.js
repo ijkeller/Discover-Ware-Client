@@ -3,6 +3,7 @@ import { LoadScript, Autocomplete } from '@react-google-maps/api';
 import { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { withAuth0 } from '@auth0/auth0-react';
 
 const libraries = ['places'];
 
@@ -21,14 +22,14 @@ class Places extends Component {
   }
 
   onLoad = (autocomplete) => {
-    console.log('autocomplete: ', autocomplete);
+    // console.log('autocomplete: ', autocomplete);
     this.autocomplete = autocomplete;
   }
 
   onPlaceChanged = () => {
     if (this.autocomplete !== null) {
       const place = this.autocomplete.getPlace();
-      console.log(place);
+      // console.log(place);
       this.setState({
         place_id: place.place_id,
         name: place.name,
@@ -38,7 +39,7 @@ class Places extends Component {
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng()
       }, () => {
-        console.log('State: ', this.state);
+        // console.log('State: ', this.state);
       });
     } else {
       console.log('Autocomplete is not loaded yet!');
@@ -70,10 +71,12 @@ class Places extends Component {
       >
         <Form.Control type='search' placeholder='Search' className='search'></Form.Control>
       </Autocomplete>
-      <Button variant='primary' onClick={this.savePlace}>Save Place</Button>
+      {
+        this.props.auth0.isAuthenticated && <Button variant='secondary' onClick={this.savePlace}>Save Place</Button>
+      }
     </LoadScript>
     );
   }
 }
 
-export default Places;
+export default withAuth0(Places);
