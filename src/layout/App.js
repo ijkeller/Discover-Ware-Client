@@ -11,11 +11,36 @@ import {
   BrowserRouter as Router,
   Routes,
   Route
-} from "react-router-dom";
+} from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+      center: {
+        lat: undefined,
+        lng: undefined
+      },
+    }
+    navigator.geolocation.getCurrentPosition(this.centerCurrentPosition);
+  }
+
+  centerCurrentPosition = (position) => {
+    const coords = position.coords;
+    console.log(coords);
+    this.setState({
+      center: {
+        lat: coords.latitude,
+        lng: coords.longitude
+      }
+    });
+  }
+
+  setCenter = () => {
+
+  }
+
   render() {
     return (
       <>
@@ -24,7 +49,7 @@ class App extends Component {
           <Routes>
             <Route
               exact path="/"
-              element={<Map />} >
+              element={<Map center={this.state.center} />} >
             </Route>
             <Route
               exact path="/profile"
