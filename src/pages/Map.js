@@ -3,7 +3,7 @@ import MapContainer from '../components/MapContainer';
 
 class Map extends Component {
   render() {
-    return <MapContainer />
+    return <MapContainer center={this.props.center}/>
   }
 }
 
