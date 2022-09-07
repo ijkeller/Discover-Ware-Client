@@ -1,73 +1,122 @@
 import { Component } from "react";
 import { withAuth0 } from '@auth0/auth0-react';
-// import axios from 'axios';
+import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import Login from '../components/Login.js'
 import Logout from '../components/Logout.js'
+import UpdateLocation from '../components/UpdateLocation.js'
 import { ReactComponent as HomeIcon } from '../svg/home-svgrepo-com.svg';
 import './Profile.css';
 
+const SERVER = process.env.REACT_APP_SERVER;
+
+
 class Profile extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      name: 'name',
-      bio: 'bio',
+      email: 'email',
       favoriteLocations: [
         {
-          placename: 'Place Name',
-          type: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          lat: 'numbers',
-          lon: 'numbers',
-          placeimage: 'image'
-        },
-        {
-          placename: 'Place Name',
-          type: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          lat: 'numbers',
-          lon: 'numbers',
-          placeimage: 'image'
-        },
-        {
-          placename: 'Place Name',
-          type: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          lat: 'numbers',
-          lon: 'numbers',
-          placeimage: 'image'
-        },
-        {
-          placename: 'Place Name',
-          type: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          lat: 'numbers',
-          lon: 'numbers',
-          placeimage: 'image'
+          name: 'name',
+          address: 'address',
+          image: 'image',
+          types: ['type', 'type'],
+          lat: 45,
+          lng: 54,
+          place_id: 7524
         }
       ]
     }
   }
 
+  async componentDidMount() {
 
+    if (this.props.auth0.isAuthenticated) {
+      const res = await this.props.auth0.getIdTokenClaims();
+      const jwt = res.__raw;
 
+      console.log('token: ', jwt);
 
-  handleUpdate = () => {
-    console.log('update location')
+      const config = {
+        headers: { "Authorization": `Bearer ${jwt}` },
+        method: 'get',
+        baseURL: SERVER,
+        url: '/place'
+      }
 
+      const profileResponse = await axios(config);
+
+      console.log('favorites from DB: ');
+      console.table(profileResponse.data)
+      
+      this.setState({
+        favoriteLocations: profileResponse.data
+      })
+    }
   }
 
-  handleDelete = () => {
-    console.log('delete location')
-
+  getLocations = async () => {
+    try {
+      let getLocationData = await axios.get(`${SERVER}/place`)
+      console.log('getLocationData.data: ')
+      console.table(getLocationData.data)
+      this.setState({ favoriteLocations: getLocationData.data })
+    } catch (error) {
+      console.log("Get Error: ", error.response)
+    }
   }
 
-  // componentDidMount() {
-  //   this.getFavorites();
-  // }
+  handleUpdate = async (locationToUpdate) => {
+    try {
+      let locationUrl = `${SERVER}/place`;
+      console.log('locationUrl: ', locationUrl);
+      let updatedLocation = await axios.put(locationUrl, locationToUpdate);
+
+      console.log('updatedLocation: ')
+      console.table(updatedLocation)
+
+      this.getLocations()
+
+      // let updatedLocationsArray = this.state.favoriteLocations.map(origLocation => {
+      //   return origLocation._id === locationToUpdate._id
+      //     ? updatedLocation.data
+      //     : origLocation
+      // });
+      // this.setState({
+      //   favoriteLocations: updatedLocationsArray
+      // })
+
+    } catch (error) {
+      console.log('Update Error: ', error.response)
+    }
+  }
+
+  handleDelete = async (locationToDelete) => {
+    try {
+      console.log('locationToDelete: ', locationToDelete);
+      const locationToDeleteResponse = await axios.delete(`${SERVER}/place/${locationToDelete._id}`);
+      console.log('response status: ', locationToDeleteResponse.status);
+
+      this.getLocations();
+
+      // const filterLocations = this.state.favoriteLocations.filter(location => {
+      //   return location._id !== locationToDelete._id;
+      // })
+
+      // this.setState({
+      //   favoriteLocations: filterLocations
+      // })
+
+    } catch (error) {
+      console.log('Delete Error: ', error.response)
+    }
+  }
 
   render() {
     return (
       <>
-
         {
           this.props.auth0.isAuthenticated
             ?
@@ -83,7 +132,7 @@ class Profile extends Component {
                     </Form.Control>
                   </Form.Group>
                   <Form.Group >
-                    <Form.Label>Biography: </Form.Label>
+                    <Form.Label>Bio: </Form.Label>
                     <Form.Control type="textarea" rows={4}></Form.Control>
                   </Form.Group>
                 </Form>
@@ -94,11 +143,14 @@ class Profile extends Component {
                   this.state.favoriteLocations.map((location, idx) => {
                     return (
                       <div className="favorites-card" key={idx} >
-                        <h3 className="location-name">{location.placename}</h3>
+                        <h3 className="location-name">{location.name}</h3>
+                        <p className="address" >{location.address}</p>
+                        {/* <p className="notes" >{location.notes}</p> */}
+                        {/* <p className="location-type">{location.types.split(', ')}</p> */}
                         <HomeIcon className="location-image" />
-                        <p className="location-type">{location.type}</p>
-                        <Button onClick={this.handleUpdate} variant="secondary" >Update</Button>
-                        <Button onClick={this.handleDelete} variant="secondary" >Delete</Button>
+                        {/* <img src={location.image} alt={location.name} /> */}
+                        <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
+                        <Button onClick={this.handleDelete} variant="secondary" >Delete Location</Button>
                       </div>
                     )
                   })
