@@ -19,15 +19,14 @@ class App extends Component {
     super(props);
     this.state = {
       center: {
-        lat: undefined,
-        lng: undefined
+        lat: 0,
+        lng: 0
       },
     }
-    navigator.geolocation.getCurrentPosition(this.centerCurrentPosition);
   }
 
-  centerCurrentPosition = (position) => {
-    const coords = position.coords;
+  centerCurrentPosition = async () => {
+    const coords = await this.getPosition();
     console.log(coords);
     this.setState({
       center: {
@@ -37,8 +36,10 @@ class App extends Component {
     });
   }
 
-  setCenter = () => {
-
+  getPosition = () => {
+    return new Promise((resolve, reject) => {
+      return navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
   }
 
   render() {

@@ -35,6 +35,7 @@ class Profile extends Component {
 
     if (this.props.auth0.isAuthenticated) {
       const res = await this.props.auth0.getIdTokenClaims();
+      console.log ('res: ', res);
       const jwt = res.__raw;
 
       console.log('token: ', jwt);
@@ -50,7 +51,7 @@ class Profile extends Component {
 
       console.log('favorites from DB: ');
       console.table(profileResponse.data)
-      
+
       this.setState({
         favoriteLocations: profileResponse.data
       })
