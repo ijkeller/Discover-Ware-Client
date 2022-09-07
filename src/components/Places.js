@@ -51,7 +51,7 @@ class Places extends Component {
       if (this.state.name === '') {
         return undefined;
       } else {
-        const placeBaseURL = `${process.env.REACT_APP_SERVER_URL}/place`;
+        const placeBaseURL = `${process.env.REACT_APP_SERVER}/place`;
         await axios.post(placeBaseURL, this.state);
       }
     } catch (error) {
