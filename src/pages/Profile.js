@@ -17,13 +17,17 @@ class Profile extends Component {
     super(props);
     this.state = {
       email: 'email',
-      name: 'name',
-      address: 'address',
-      image: 'image',
-      types: ['type', 'type'],
-      lat: 45,
-      lng: 54,
-      place_id: 7524
+      favoriteLocations: [
+        {
+          name: 'name',
+          address: 'address',
+          image: 'image',
+          types: ['type', 'type'],
+          lat: 45,
+          lng: 54,
+          place_id: 7524
+        }
+      ]
     }
   }
 
@@ -44,8 +48,9 @@ class Profile extends Component {
 
       const profileResponse = await axios(config);
 
-      console.log('favorites from DB: ', profileResponse.data);
-
+      console.log('favorites from DB: ');
+      console.table(profileResponse.data)
+      
       this.setState({
         favoriteLocations: profileResponse.data
       })
@@ -55,6 +60,8 @@ class Profile extends Component {
   getLocations = async () => {
     try {
       let getLocationData = await axios.get(`${SERVER}/place`)
+      console.log('getLocationData.data: ')
+      console.table(getLocationData.data)
       this.setState({ favoriteLocations: getLocationData.data })
     } catch (error) {
       console.log("Get Error: ", error.response)
@@ -69,7 +76,7 @@ class Profile extends Component {
 
       console.log('updatedLocation: ')
       console.table(updatedLocation)
-    
+
       this.getLocations()
 
       // let updatedLocationsArray = this.state.favoriteLocations.map(origLocation => {
@@ -139,7 +146,7 @@ class Profile extends Component {
                         <h3 className="location-name">{location.name}</h3>
                         <p className="address" >{location.address}</p>
                         {/* <p className="notes" >{location.notes}</p> */}
-                        <p className="location-type">{location.types.split(', ')}</p>
+                        {/* <p className="location-type">{location.types.split(', ')}</p> */}
                         <HomeIcon className="location-image" />
                         {/* <img src={location.image} alt={location.name} /> */}
                         <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
