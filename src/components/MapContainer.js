@@ -4,7 +4,7 @@ import React from 'react';
 const libraries = ['places'];
 
 function MapContainer(props) {
-  console.log(props.center);
+  // console.log(props.center);
 
   const mapStyles = {
     height: "93vh",
