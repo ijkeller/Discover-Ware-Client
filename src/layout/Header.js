@@ -2,8 +2,11 @@ import { Component } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import Logout from '../components/Logout.js';
+import Login from '../components/Login.js';
 import { ReactComponent as HomeIcon } from '../svg/home-svgrepo-com.svg';
 import { ReactComponent as ProfileIcon } from '../svg/person-circle-svgrepo-com.svg';
+import { withAuth0 } from '@auth0/auth0-react';
 import { ReactComponent as AboutIcon } from '../svg/question-svgrepo-com.svg';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
@@ -28,6 +31,7 @@ class Header extends Component {
                 <AboutIcon className='icon'/>
               </Nav.Link>
             </Nav>
+            { this.props.auth0.isAuthenticated ? <Logout /> : <Login />}
           </Container>
         </Navbar>
       </header>
@@ -35,4 +39,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withAuth0(Header);

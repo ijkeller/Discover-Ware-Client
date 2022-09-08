@@ -5,10 +5,10 @@ import Modal from 'react-bootstrap/Modal';
 
 export default class UpdateLocation extends React.Component {
     constructor(props) {
-        super(props)
-        this.state = {
-            showModal: false,
-        }
+      super(props)
+      this.state = {
+          showModal: false,
+      }
     }
 
     handleOpen = () => {
@@ -48,7 +48,7 @@ export default class UpdateLocation extends React.Component {
                             <Form.Group className="mb-3" controlId="notes">
                                 <Form.Control type="text" placeholder='Edit Notes' />
                             </Form.Group>
-                            <Button variant="secondary" type="submit" onClick={this.handleClose} >Submit</Button>
+                            <Button className="button update-button" variant="secondary" type="submit" onClick={this.handleClose} >Submit</Button>
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>

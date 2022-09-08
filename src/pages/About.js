@@ -1,25 +1,22 @@
 import { Component } from "react";
-// import Card from "react-bootstrap/Card"
-import { ReactComponent as ProfileIcon } from '../svg/person-circle-svgrepo-com.svg';
+import Card from "react-bootstrap/Card";
 import './About.css';
-import Data from '../assets/personalinfo.json'
+import Data from '../assets/personalinfo.json';
 
 class About extends Component {
-  
-
-  personImg = ProfileIcon
-
 
   render() {
     return (
       <div className="about-container" >
         {Data.map((person, idx) => {
-          return(
-          <div className="card" key={idx} >
-            <h3 className="title">{person.personName}</h3>
-            <ProfileIcon className="personal-pic" />
-            <p className="bio">{person.personData}</p>
-          </div>)
+          return (
+            <Card className="card" key={idx} >
+              <Card.Img variant="top" src={person.person_Img} alt={`${person.personName} img`} />
+              <Card.Body>
+                <Card.Title className="title">{person.personName}</Card.Title>
+                <Card.Text className="bio">{person.personData}</Card.Text>
+              </Card.Body>
+            </Card>)
         })}
       </div>
     );
