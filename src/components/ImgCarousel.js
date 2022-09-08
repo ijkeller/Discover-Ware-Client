@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Modal from 'react-bootstrap/Modal';
+import '../pages/Profile.css'
 
 
 
@@ -35,11 +36,11 @@ export default class ImgCarousel extends React.Component {
 
     render() {
         return (
-            <Carousel>
+            <Carousel className="image-carousel">
                 {this.props.location.images.map((image, i) => {
                     return (
                         <Carousel.Item key={i}>
-                            <img className="carousel-image" src={image} alt={`${this.props.location.name} img ${i}`} />
+                            <img className="location-image" src={image} alt={`${this.props.location.name} img ${i}`} onClick={() => this.imgModal(image)}/>
                         </Carousel.Item>
                     )
                 })}
