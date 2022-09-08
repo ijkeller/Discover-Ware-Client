@@ -1,11 +1,17 @@
+* {
+    box-sizing: border-box !important;
+}
+
 .profile-container {
     display: grid;
-    grid-template-rows: 35% 65%;
+    grid-template-rows: 20% 80%;
+    width: 96vw;
+    overflow-x: hidden;
 }
 
 .profile-information {
     position: relative;
-
+    margin: 10px;
 }
 
 .profile-img {
@@ -16,6 +22,7 @@
 
 .favorite-locations {
     display: block;
+    margin: 10px;
 }
 
 .favorites-card {
@@ -38,32 +45,28 @@
 }
 
 .image-carousel {
+
     justify-self: center !important;
     align-self: center !important;
-    width: auto !important;
-    max-width: 20rem !important;
-    height: 8rem !important;
-    border: 1px solid black;
+    width: 20rem !important;
+    height: 11rem !important;
+    /* border: 1px solid black; */
+    overflow-y: hidden;
 }
 
 .location-image {
-    width: auto !important;
-    height: 8rem !important;
+    width: 100% !important;
     justify-self: center !important;
     align-self: center !important;
-
 }
 
-.modal {
-    width: auto !important;
-    height: auto !important;
-    max-width: 97vw !important;
-    max-height: 97vh !important;
+.modal-image {
+    max-width: 100% !important;
+    max-height: 100% !important;
 }
 
-.modal {
-    width: auto !important;
-    height: auto !important;
+.modal-dialogue {
+    width: 100% !important;
     max-width: 97vw !important;
-    max-height: 97vh !important;
+    margin: 0 !important;
 }

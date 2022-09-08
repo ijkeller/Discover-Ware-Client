@@ -129,13 +129,12 @@ class Profile extends Component {
                         <h3 className="location-name">{location.name}</h3>
                         <h4 className="address" >{location.address}</h4>
                         <p className="notes" >Notes: {location.notes}</p>
+                        <p className="types" >Type: {location.types.join(', ')} </p>
                         <div className="carousel-container" >
                           <ImgCarousel location={location} />
-                        </ div>
-                        <p className="types" >Type: {location.types.join(', ')} </p>
-                        <ImgCarousel location={location} />
-                        <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
-                        <Button className="button delete-button" onClick={() => this.handleDelete(location)} size="sm" variant="danger" >Delete Location</Button>
+                        </div>
+                          <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
+                          <Button className="button delete-button" onClick={() => this.handleDelete(location)} size="sm" variant="danger" >Delete Location</Button>
                       </div>
                     )
                   })

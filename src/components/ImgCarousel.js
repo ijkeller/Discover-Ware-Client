@@ -11,44 +11,45 @@ export default class ImgCarousel extends React.Component {
         super(props);
         this.state = {
             showModal: false,
+            image: ''
         }
     }
 
-    handleOpen = () => {
-        this.setState({ showModal: true })
+    handleOpen = (imagePath) => {
+        this.setState({ 
+            image: imagePath,
+            showModal: true
+         })
+    
     }
 
     handleClose = () => {
         this.setState({ showModal: false })
     }
 
-    imgModal = (image) => {
-        return (
-            <Modal show={this.state.showModal} onHide={this.handleClose} centered className='modal' >
-                <Modal.Header closeButton></Modal.Header>
-                <Modal.Body>
-                    <img className="modal-image" src={image} alt={`${this.props.location.name} img`} />
-                </Modal.Body>
-                <Modal.Footer>
-                </Modal.Footer>
-            </Modal>
-        )
-    }
-
     render() {
         return (
-
-            <Carousel className='image-carousel'>
-                {this.props.location.images.map((image, i) => {
-                    return (
-                        <Carousel.Item key={i} >
-                            <img className="location-image" src={image} alt={`${this.props.location.name} img ${i}`} 
-                            onClick={() => this.imgModal(image)} 
-                            />
-                        </Carousel.Item>
-                    )
-                })}
-            </Carousel>
+            <>
+                <Carousel className='image-carousel'>
+                    {this.props.location.images.map((image, i) => {
+                        return (
+                            <Carousel.Item key={i} >
+                                <img className="location-image" src={image} alt={`${this.props.location.name} img ${i}`}
+                                    onClick={() => this.handleOpen(image)}
+                                />
+                            </Carousel.Item>
+                        )
+                    })}
+                </Carousel>
+                <Modal show={this.state.showModal} onHide={this.handleClose} centered className='modal' >
+                    <Modal.Header closeButton></Modal.Header>
+                    <Modal.Body>
+                        <img className="modal-image" src={this.state.image} alt={`${this.props.location.name} img`} />
+                    </Modal.Body>
+                    <Modal.Footer>
+                    </Modal.Footer>
+                </Modal>
+            </>
         )
     }
 }
