@@ -23,15 +23,16 @@ function Places(props) {
   const onPlaceChanged = () => {
     if (autoComplete !== null) {
       const place = autoComplete.getPlace();
+      console.log(place);
       const newLat = place.geometry.location.lat();
       const newLng = place.geometry.location.lng();
       let imageUrl;
       try {
         imageUrl = place.photos[0].getUrl();
       } catch (error) {
-        imageUrl = '../assets/defaultPlaceImage.png'
+        imageUrl = '../assets/defaultPlaceImage.png';
       }
-      setName(place.place_id);
+      setName(place.name);
       setAddress(place.formatted_addres);
       setImage(imageUrl);
       setTypes([...place.types]);
@@ -51,6 +52,7 @@ function Places(props) {
       } else {
         const res = await getIdTokenClaims();
         const token = res.__raw;
+        console.log(token);
         const config = {
           headers: { Authorization: `Bearer ${token}` },
           method: 'post',
@@ -58,6 +60,7 @@ function Places(props) {
           url: '/place',
           data: {name, address, image, types, lat, lng}
         };
+        console.log(config);
         const postResponse = await axios(config);
         console.log('postResponse.data: ', postResponse.data);
       }
