@@ -1,10 +1,10 @@
 import { Component } from "react";
 import { withAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button'
-import Login from '../components/Login.js'
-import Logout from '../components/Logout.js'
-import UpdateLocation from '../components/UpdateLocation.js'
+import Button from 'react-bootstrap/Button';
+import UpdateLocation from '../components/UpdateLocation.js';
+import Login from '../components/Login.js';
+import ImgCarousel from '../components/ImgCarousel';
 import './Profile.css';
 
 const SERVER = process.env.REACT_APP_SERVER;
@@ -21,7 +21,7 @@ class Profile extends Component {
           name: 'initial state',
           address: 'initial state',
           notes: '',
-          image: 'initial state',
+          image: [],
           types: ['initial state', 'initial state'],
           lat: 45,
           lng: 45,
@@ -57,6 +57,7 @@ class Profile extends Component {
         url: '/place'
       }
       const getLocationData = await axios(config);
+      console.log(getLocationData.data)
       this.setState({
         favoriteLocations: getLocationData.data
       })
@@ -112,7 +113,6 @@ class Profile extends Component {
             ?
             <div className="profile-container" >
               <div className="profile-information" >
-                <Logout />
                 <h3>Profile Information</h3>
                 <h4>{this.state.name}</h4>
                 <p>{this.state.email}</p>
@@ -127,9 +127,11 @@ class Profile extends Component {
                         <h3 className="location-name">{location.name}</h3>
                         <h4 className="address" >{location.address}</h4>
                         <p className="notes" >Notes: {location.notes}</p>
+                        {/* <ImgCarousel location={location} /> */}
                         <img className="location-image" src={location.image} alt={location.name} />
+
                         <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
-                        <Button onClick={() => this.handleDelete(location)} size="sm" variant="danger" >Delete Location</Button>
+                        <Button className="button delete-button" onClick={() => this.handleDelete(location)} size="sm" variant="danger" >Delete Location</Button>
                       </div>
                     )
                   })
@@ -138,8 +140,8 @@ class Profile extends Component {
             </div>
             :
             <>
+              <h1>Please Sign In</h1>
               <Login />
-              <h1>Not Authenticated</h1>
             </>
         }
       </>

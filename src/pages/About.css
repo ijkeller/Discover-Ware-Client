@@ -9,7 +9,7 @@
 .card {
     border: 1px solid black !important;
     width: 30rem !important;
-    height: 25rem !important;
+    height: auto;
     padding: 10px;
 }
 
