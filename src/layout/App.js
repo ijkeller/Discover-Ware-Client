@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import { withAuth0 } from '@auth0/auth0-react';
 import Header from './Header';
-import Footer from './Footer';
 import Map from '../pages/Map';
 import Profile from '../pages/Profile';
 import About from '../pages/About';
@@ -14,25 +13,31 @@ import {
 import './App.css';
 
 class App extends Component {
+  static libraries = ['places'];
+
   constructor(props) {
     super(props);
     this.state = {
+      mapRef: null,
       center: {
-        lat: 0,
-        lng: 0
+        lat: undefined,
+        lng: undefined
       },
     }
   }
 
+  getMapRef = (mapRef) => {
+    this.setState({mapRef});
+  }
+
   centerCurrentPosition = async () => {
-    const coords = await this.getPosition();
-    console.log(coords);
+    const position = await this.getPosition();
     this.setState({
       center: {
-        lat: coords.latitude,
-        lng: coords.longitude
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
       }
-    });
+    }, () => console.log('App state: ', this.state));
   }
 
   getPosition = () => {
@@ -41,15 +46,20 @@ class App extends Component {
     });
   }
 
+  componentDidMount = async () => {
+    await this.centerCurrentPosition();
+  }
+
   render() {
     return (
       <>
         <Router>
-          <Header />
+          <Header mapRef={this.state.mapRef} libraries={App.libraries} />
           <Routes>
             <Route
               exact path="/"
-              element={<Map center={this.state.center} />} >
+              element={<Map center={this.state.center} getMapRef={this.getMapRef} />}
+            >
             </Route>
             <Route
               exact path="/profile"
@@ -60,7 +70,6 @@ class App extends Component {
               element={<About />} >
             </Route>
           </Routes>
-          <Footer />
         </Router>
       </>
     )
