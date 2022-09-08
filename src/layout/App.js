@@ -5,6 +5,7 @@ import { withAuth0 } from '@auth0/auth0-react';
 import Header from './Header';
 import Footer from './Footer';
 import Map from '../pages/Map';
+// import axios from 'axios';
 import Profile from '../pages/Profile';
 import About from '../pages/About';
 // import Login from '../components/Login'
@@ -20,11 +21,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      token: '',
       center: {
         lat: 0,
         lng: 0
       },
     }
+  }
+
+  updateToken = async (propsToken) => {
+    // const token = await this.props.auth0.getIdTokenClaims()
+    // console.log('Apps recieved token/ __raw: ', token.__raw)
+    this.setState({ token: propsToken })
   }
 
   centerCurrentPosition = async () => {
@@ -45,10 +53,11 @@ class App extends Component {
   }
 
   render() {
+    console.log('Apps state', this.state.token)
     return (
       <>
         <Router>
-          <Header />
+          <Header token={this.state.token} />
           <Routes>
             <Route
               exact path="/"
@@ -56,7 +65,7 @@ class App extends Component {
             </Route>
             <Route
               exact path="/profile"
-              element={<Profile />} >
+              element={<Profile updateToken={this.updateToken} token={this.state.token} />} >
             </Route>
             <Route
               exact path="/about"

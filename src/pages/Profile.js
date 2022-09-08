@@ -16,18 +16,18 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '-------',
-      email: '-------',
-      picture: '-------',
+      name: 'initial state',
+      email: 'initial state',
+      picture: 'initial state',
       favoriteLocations: [
         {
-          name: 'name',
-          address: 'address',
-          image: 'image',
-          types: ['type', 'type'],
+          name: 'initial state',
+          address: 'initial state',
+          image: 'initial state',
+          types: ['initial state', 'initial state'],
           lat: 45,
-          lng: 54,
-          place_id: 7524
+          lng: 45,
+          place_id: 4545
         }
       ]
     }
@@ -37,38 +37,53 @@ class Profile extends Component {
 
     if (this.props.auth0.isAuthenticated) {
       const res = await this.props.auth0.getIdTokenClaims();
-      console.log ('res: ', res);
+      // console.log ('res: ', res);
       const jwt = res.__raw;
 
       console.log('token: ', jwt);
 
+      // const config = {
+      //   headers: { "Authorization": `Bearer ${jwt}` },
+      //   method: 'get',
+      //   baseURL: SERVER,
+      //   url: '/place'
+      // }
+
+      // const profileResponse = await axios(config);
+
+
+      // console.log('favorites from DB: ');
+      // console.table(profileResponse.data)
+
+      this.setState({
+        name: res.name,
+        email: res.email,
+        picture: res.picture
+      });
+      
+      this.props.updateToken(jwt);
+
+      this.getLocations(jwt);
+
+    }
+  }
+
+  getLocations = async (token) => {
+    // const token = await this.props.auth0.getIdTokenClaims()
+    // console.log('get location - __raw: ', token.__raw)
+    try {
       const config = {
-        headers: { "Authorization": `Bearer ${jwt}` },
+        headers: { "Authorization": `Bearer ${token}` },
         method: 'get',
         baseURL: SERVER,
         url: '/place'
       }
-
-      const profileResponse = await axios(config);
-
-      console.log('favorites from DB: ');
-      console.table(profileResponse.data)
-
-      this.setState({
-        favoriteLocations: profileResponse.data,
-        name: res.name,
-        email: res.email,
-        picture: res.picture
-      })
-    }
-  }
-
-  getLocations = async () => {
-    try {
-      let getLocationData = await axios.get(`${SERVER}/place`)
+      let getLocationData = await axios(config)
       console.log('getLocationData.data: ')
       console.table(getLocationData.data)
-      this.setState({ favoriteLocations: getLocationData.data })
+      this.setState({
+        favoriteLocations: getLocationData.data
+      })
     } catch (error) {
       console.log("Get Error: ", error.response)
     }
@@ -78,12 +93,13 @@ class Profile extends Component {
     try {
       let locationUrl = `${SERVER}/place`;
       console.log('locationUrl: ', locationUrl);
-      let updatedLocation = await axios.put(locationUrl, locationToUpdate);
+      let token = { headers: { "Authorization": `Bearer ${this.props.token}` } };
+      let updatedLocation = await axios.put(locationUrl, locationToUpdate, token);
 
       console.log('updatedLocation: ')
       console.table(updatedLocation)
 
-      this.getLocations()
+      this.getLocations(this.props.token)
 
       // let updatedLocationsArray = this.state.favoriteLocations.map(origLocation => {
       //   return origLocation._id === locationToUpdate._id
@@ -102,10 +118,16 @@ class Profile extends Component {
   handleDelete = async (locationToDelete) => {
     try {
       console.log('locationToDelete: ', locationToDelete);
-      const locationToDeleteResponse = await axios.delete(`${SERVER}/place/${locationToDelete._id}`);
+      const config = {
+        headers: { "Authorization": `Bearer ${this.props.token}` },
+        method: 'delete',
+        baseURL: SERVER,
+        url: `/place/${locationToDelete._id}`
+      }
+      const locationToDeleteResponse = await axios(config);
       console.log('response status: ', locationToDeleteResponse.status);
 
-      this.getLocations();
+      this.getLocations(this.props.token);
 
       // const filterLocations = this.state.favoriteLocations.filter(location => {
       //   return location._id !== locationToDelete._id;
@@ -159,7 +181,7 @@ class Profile extends Component {
                         <HomeIcon className="location-image" />
                         {/* <img src={location.image} alt={location.name} /> */}
                         <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
-                        <Button onClick={this.handleDelete} variant="secondary" >Delete Location</Button>
+                        <Button onClick={() => this.handleDelete(location)} variant="secondary" >Delete Location</Button>
                       </div>
                     )
                   })

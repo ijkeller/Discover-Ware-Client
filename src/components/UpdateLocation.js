@@ -23,7 +23,6 @@ export default class UpdateLocation extends React.Component {
         e.preventDefault();
         let locationToUpdate = {
             _id: this.props.location._id,
-            email: this.props.location.email,
             name: this.props.location.name,
             address: this.props.location.address,
             // notes: e.target.note.value || this.props.location.notes,

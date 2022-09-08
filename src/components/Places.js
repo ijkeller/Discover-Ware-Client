@@ -49,10 +49,17 @@ class Places extends Component {
   savePlace = async () => {
     try {
       if (this.state.name === '') {
+        console.log("this.state.name === ''")
         return undefined;
       } else {
         const placeBaseURL = `${process.env.REACT_APP_SERVER}/place`;
-        await axios.post(placeBaseURL, this.state);
+
+        console.log('pre axios - save place token: ', this.props.token )
+
+        let postResponse = await axios.post(placeBaseURL, this.state, {headers: { "Authorization": `Bearer ${this.props.token}` }});
+        console.log(`placeBaseURL: ${placeBaseURL}`)
+        console.log('postResponse.data: ', postResponse.data)
+        // console.table(this.state)
       }
     } catch (error) {
       console.log('Error in savePlace', error);
