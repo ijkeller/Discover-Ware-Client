@@ -75,20 +75,23 @@ function Places(props) {
   }
 
   return (
-    props.placesIsEnabled && <LoadScript
-    googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-    libraries={props.libraries}
-  >
-    <Autocomplete
-      onLoad={onLoad}
-      onPlaceChanged={onPlaceChanged}
+    <LoadScript
+        googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+        libraries={props.libraries}
     >
-      <Form.Control type='search' placeholder='Search' className='search'></Form.Control>
-    </Autocomplete>
-    {
-      isAuthenticated && <Button variant='secondary' onClick={savePlace}>Save Place</Button>
-    }
-  </LoadScript>
+      {
+        props.placesIsEnabled &&
+          <Autocomplete
+          onLoad={onLoad}
+          onPlaceChanged={onPlaceChanged}>
+            <Form.Control type='search' placeholder='Search' className='search'></Form.Control>
+          </Autocomplete>
+      }
+      {
+        isAuthenticated && props.placesIsEnabled &&
+          <Button variant='secondary' onClick={savePlace}>Save Place</Button>
+      }
+    </LoadScript>
   );
 }
 
