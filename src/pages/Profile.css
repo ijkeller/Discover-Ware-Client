@@ -44,3 +44,10 @@
     max-height: 97vh !important;
 }
 
+.modal {
+    width: auto !important;
+    height: auto !important;
+    max-width: 97vw !important;
+    max-height: 97vh !important;
+}
+

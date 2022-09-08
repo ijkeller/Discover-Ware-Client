@@ -4,6 +4,8 @@ import Modal from 'react-bootstrap/Modal';
 import '../pages/Profile.css'
 
 
+
+
 export default class ImgCarousel extends React.Component {
     constructor(props) {
         super(props);
@@ -35,6 +37,7 @@ export default class ImgCarousel extends React.Component {
 
     render() {
         return (
+
             <Carousel className='image-carousel'>
                 {this.props.location.images.map((image, i) => {
                     return (
