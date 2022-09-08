@@ -3,8 +3,8 @@ import React from "react";
 
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
-  console.log('useAuth0: ')
-console.table(useAuth0.return)
+  // console.log('useAuth0: ')
+// console.table(useAuth0.return)
   return <button onClick={() => loginWithRedirect()}>Log In</button>;
 };
 
