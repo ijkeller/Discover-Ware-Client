@@ -12,6 +12,7 @@ function Places(props) {
   const [types, setTypes] = useState([]);
   const [lat, setLat] = useState(47.6180106);
   const [lng, setLng] = useState(-122.3516264);
+  const [placeId, setPlaceId] = useState('');
   const [autoComplete, setAutoComplete] = useState(null);
 
   const { getIdTokenClaims, isAuthenticated } = useAuth0();
@@ -23,7 +24,7 @@ function Places(props) {
   const onPlaceChanged = () => {
     if (autoComplete !== null) {
       const place = autoComplete.getPlace();
-      console.log(place);
+      console.log('place', place);
       const newLat = place.geometry.location.lat();
       const newLng = place.geometry.location.lng();
       let imageUrl;
@@ -33,11 +34,12 @@ function Places(props) {
         imageUrl = '../assets/defaultPlaceImage.png';
       }
       setName(place.name);
-      setAddress(place.formatted_addres);
+      setAddress(place.formatted_address);
       setImage(imageUrl);
       setTypes([...place.types]);
       setLat(newLat);
       setLng(newLng);
+      setPlaceId(place.place_id);
       props?.mapRef.panTo({lat: newLat, lng: newLng});
     } else {
       console.log('Autocomplete is not loaded yet!');
@@ -58,8 +60,17 @@ function Places(props) {
           method: 'post',
           baseURL: process.env.REACT_APP_SERVER,
           url: '/place',
-          data: {name, address, image, types, lat, lng}
+          data: {
+            name,
+            address,
+            image,
+            types,
+            lat,
+            lng,
+            place_id: placeId
+          }
         };
+        console.log('place id:', placeId);
         console.log(config);
         const postResponse = await axios(config);
         console.log('postResponse.data: ', postResponse.data);
