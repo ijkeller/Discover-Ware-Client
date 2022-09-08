@@ -41,8 +41,10 @@ export default class ImgCarousel extends React.Component {
             <Carousel className='image-carousel'>
                 {this.props.location.images.map((image, i) => {
                     return (
-                        <Carousel.Item key={i}>
-                            <img className="location-image" src={image} alt={`${this.props.location.name} img ${i}`} onClick={() => this.imgModal(image)} />
+                        <Carousel.Item key={i} >
+                            <img className="location-image" src={image} alt={`${this.props.location.name} img ${i}`} 
+                            onClick={() => this.imgModal(image)} 
+                            />
                         </Carousel.Item>
                     )
                 })}
