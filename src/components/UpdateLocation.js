@@ -39,7 +39,7 @@ export default class UpdateLocation extends React.Component {
     render() {
         return (
             <>
-                <Button variant="secondary" onClick={this.handleOpen} > Update Location</Button>
+                <Button size="sm" variant="secondary" onClick={this.handleOpen} > Update Notes</Button>
                 <Modal show={this.state.showModal} onHide={this.handleClose} centered className="modal" >
                     <Modal.Header closeButton></Modal.Header>
                     <Modal.Title>Update Location</Modal.Title>
