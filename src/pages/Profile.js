@@ -134,6 +134,8 @@ class Profile extends Component {
                         </ div>
                         <p className="types" >Type: {location.types.join(', ')} </p>
                         <ImgCarousel location={location} />
+                        <p className="types" >Type: {location.types.join(', ')} </p>
+                        <ImgCarousel location={location} />
                         <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
                         <Button className="button delete-button" onClick={() => this.handleDelete(location)} size="sm" variant="danger" >Delete Location</Button>
                       </div>
