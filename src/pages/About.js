@@ -5,6 +5,10 @@ import Data from '../assets/personalinfo.json';
 
 class About extends Component {
 
+  componentDidMount = () => {
+    this.props.disablePlaces();
+  }
+
   render() {
     return (
       <div className="about-container" >

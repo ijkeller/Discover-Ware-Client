@@ -5,7 +5,7 @@ class IsLoadingAndError extends React.Component {
   render() {
     return(
       this.props.auth0.isLoading ?
-        <div> Loading...</div>
+        <div> Loading...testingr3290432</div>
         :
         this.props.auth0.error ?
         <div>Oops... {this.props.auth0.error.message}</div>

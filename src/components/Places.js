@@ -19,10 +19,11 @@ function Places(props) {
 
   const onLoad = (autocomplete) => {
     setAutoComplete(autocomplete);
+    console.log('Autocomplete: ', autocomplete);
   }
 
   const onPlaceChanged = () => {
-    if (autoComplete !== null) {
+    if (autoComplete !== null && props.mapRef !== null) {
       const place = autoComplete.getPlace();
       const newLat = place.geometry.location.lat();
       const newLng = place.geometry.location.lng();
@@ -65,8 +66,6 @@ function Places(props) {
             place_id: placeId
           }
         };
-        console.log('place id:', placeId);
-        console.log(config);
         const postResponse = await axios(config);
         console.log('postResponse.data: ', postResponse.data);
       }
@@ -76,7 +75,7 @@ function Places(props) {
   }
 
   return (
-    <LoadScript
+    props.placesIsEnabled && <LoadScript
     googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
     libraries={props.libraries}
   >
