@@ -33,6 +33,7 @@ class Profile extends Component {
 
   componentDidMount = async () => {
     try {
+      this.props.disablePlaces();
       if (this.props.auth0.isAuthenticated) {
         const res = await this.props.auth0.getIdTokenClaims();
         const token = res.__raw;
