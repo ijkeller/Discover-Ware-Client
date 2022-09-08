@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button'
 import Login from '../components/Login.js'
 import Logout from '../components/Logout.js'
 import UpdateLocation from '../components/UpdateLocation.js'
-import { ReactComponent as HomeIcon } from '../svg/home-svgrepo-com.svg';
 import './Profile.css';
 
 const SERVER = process.env.REACT_APP_SERVER;
@@ -128,8 +127,7 @@ class Profile extends Component {
                         <h3 className="location-name">{location.name}</h3>
                         <p className="address" >{location.address}</p>
                         <p className="notes" >{location.notes}</p>
-                        <p className="location-type">{location.types.split(', ')}</p>
-                        <HomeIcon className="location-image" />
+                        <p className="location-type">{location.types.join(', ')}</p>
                         <img className="location-image" src={location.image} alt={location.name} />
                         <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
                         <Button onClick={() => this.handleDelete(location)} variant="secondary" >Delete Location</Button>
