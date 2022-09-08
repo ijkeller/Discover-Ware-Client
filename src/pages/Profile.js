@@ -21,7 +21,7 @@ class Profile extends Component {
           name: 'initial state',
           address: 'initial state',
           notes: '',
-          image: [],
+          images: [],
           types: ['initial state', 'initial state'],
           lat: 45,
           lng: 45,
@@ -127,9 +127,7 @@ class Profile extends Component {
                         <h3 className="location-name">{location.name}</h3>
                         <h4 className="address" >{location.address}</h4>
                         <p className="notes" >Notes: {location.notes}</p>
-                        {/* <ImgCarousel location={location} /> */}
-                        <img className="location-image" src={location.image} alt={location.name} />
-
+                        <ImgCarousel location={location} />
                         <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
                         <Button className="button delete-button" onClick={() => this.handleDelete(location)} size="sm" variant="danger" >Delete Location</Button>
                       </div>

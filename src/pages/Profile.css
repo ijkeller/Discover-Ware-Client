@@ -10,7 +10,6 @@
 
 .favorite-locations {
     display: block;
-    /* margin: 5px; */
 }
 
 .favorites-card {
@@ -24,11 +23,24 @@
     padding: 5px;
 }
 
-.location-image {
-    position: absolute;
-    top: 7%;
-    right: 7%;
-    justify-self: center;
-    width: auto;
-    height: 8rem;
+.image-carousel {
+    position: absolute !important;
+    top: 7% !important;
+    right: 7% !important;
+    justify-self: center !important;
+    width: auto !important;
+    height: 10rem !important;
 }
+
+.location-image {
+    width: auto !important;
+    height: 8rem !important;
+}
+
+.modal {
+    width: auto !important;
+    height: auto !important;
+    max-width: 97vw !important;
+    max-height: 97vh !important;
+}
+
