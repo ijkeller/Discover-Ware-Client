@@ -1,15 +1,28 @@
+* {
+    box-sizing: border-box !important;
+}
+
 .profile-container {
     display: grid;
-    grid-template-rows: 35% 65%;
+    grid-template-rows: 20% 80%;
+    width: 96vw;
+    overflow-x: hidden;
 }
 
 .profile-information {
     position: relative;
+    margin: 10px;
+}
 
+.profile-img {
+    position: absolute;
+    right: 5%;
+    top: 10%;
 }
 
 .favorite-locations {
     display: block;
+    margin: 10px;
 }
 
 .favorites-card {
@@ -17,37 +30,43 @@
     display: block;
     border: 1px solid black;
     border-radius: .5rem;
-    width: 99vw;
+    width: 98vw;
     height: auto;
     margin: 5px;
     padding: 5px;
 }
 
-.image-carousel {
+.carousel-container {
     position: absolute !important;
     top: 7% !important;
-    right: 7% !important;
+    right: 3% !important;
+    display: grid;
+    width: 20rem;
+}
+
+.image-carousel {
+
     justify-self: center !important;
-    width: auto !important;
-    height: 10rem !important;
+    align-self: center !important;
+    width: 20rem !important;
+    height: 11rem !important;
+    /* border: 1px solid black; */
+    overflow-y: hidden;
 }
 
 .location-image {
-    width: auto !important;
-    height: 8rem !important;
+    width: 100% !important;
+    justify-self: center !important;
+    align-self: center !important;
 }
 
-.modal {
-    width: auto !important;
-    height: auto !important;
+.modal-image {
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+
+.modal-dialogue {
+    width: 100% !important;
     max-width: 97vw !important;
-    max-height: 97vh !important;
+    margin: 0 !important;
 }
-
-.modal {
-    width: auto !important;
-    height: auto !important;
-    max-width: 97vw !important;
-    max-height: 97vh !important;
-}
-

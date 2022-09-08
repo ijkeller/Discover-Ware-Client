@@ -116,10 +116,10 @@ class Profile extends Component {
             ?
             <div className="profile-container" >
               <div className="profile-information" >
-                <h3>Profile Information</h3>
-                <h4>{this.state.name}</h4>
-                <p>{this.state.email}</p>
-                <img src={this.state.picture} alt={` - ${this.state.name} - pic`} />
+                <h3 className="profile-title">Profile Information</h3>
+                <h4 className="profile-name">{this.state.name}</h4>
+                <p className="profile-email">{this.state.email}</p>
+                <img className="profile-img" src={this.state.picture} alt={` - ${this.state.name} - pic`} />
               </div>
               <div className="favorite-locations" >
                 <h3>Favorite Locations</h3>
@@ -131,9 +131,11 @@ class Profile extends Component {
                         <h4 className="address" >{location.address}</h4>
                         <p className="notes" >Notes: {location.notes}</p>
                         <p className="types" >Type: {location.types.join(', ')} </p>
-                        <ImgCarousel location={location} />
-                        <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
-                        <Button className="button delete-button" onClick={() => this.handleDelete(location)} size="sm" variant="danger" >Delete Location</Button>
+                        <div className="carousel-container" >
+                          <ImgCarousel location={location} />
+                        </div>
+                          <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
+                          <Button className="button delete-button" onClick={() => this.handleDelete(location)} size="sm" variant="danger" >Delete Location</Button>
                       </div>
                     )
                   })
