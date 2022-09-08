@@ -5,7 +5,7 @@ import './About.css';
 import Data from '../assets/personalinfo.json'
 
 class About extends Component {
-
+  
 
   personImg = ProfileIcon
 

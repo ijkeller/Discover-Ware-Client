@@ -14,7 +14,7 @@ class Header extends Component {
     return (
       <header className='Header'>
         <h2>DiscoverWare</h2>
-        <Places savePlace={this.props.savePlace}/>
+        <Places savePlace={this.props.savePlace} token={this.props.token} />
         <Navbar expand="lg" variant="secondary">
           <Container>
             <Nav>
