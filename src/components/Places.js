@@ -8,7 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 function Places(props) {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
-  const [image, setImage] = useState('');
+  const [images, setImages] = useState([]);
   const [types, setTypes] = useState([]);
   const [lat, setLat] = useState(47.6180106);
   const [lng, setLng] = useState(-122.3516264);
@@ -24,18 +24,13 @@ function Places(props) {
   const onPlaceChanged = () => {
     if (autoComplete !== null) {
       const place = autoComplete.getPlace();
-      console.log('place', place);
       const newLat = place.geometry.location.lat();
       const newLng = place.geometry.location.lng();
-      let imageUrl;
-      try {
-        imageUrl = place.photos[0].getUrl();
-      } catch (error) {
-        imageUrl = '../assets/defaultPlaceImage.png';
-      }
+      let photos = place.photos.map(photo => photo.getUrl());
+      if (photos.length === 0) photos = ['../assets/defaultPlaceImage.png'];
       setName(place.name);
       setAddress(place.formatted_address);
-      setImage(imageUrl);
+      setImages(photos);
       setTypes([...place.types]);
       setLat(newLat);
       setLng(newLng);
@@ -63,7 +58,7 @@ function Places(props) {
           data: {
             name,
             address,
-            image,
+            images,
             types,
             lat,
             lng,
