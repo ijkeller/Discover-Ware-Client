@@ -25,7 +25,7 @@ export default class UpdateLocation extends React.Component {
             _id: this.props.location._id,
             name: this.props.location.name,
             address: this.props.location.address,
-            notes: e.target.note.value || this.props.location.notes,
+            notes: e.target.notes.value || this.props.location.notes,
             image: this.props.location.image,
             types: this.props.location.types,
             lat: this.props.location.lat,
