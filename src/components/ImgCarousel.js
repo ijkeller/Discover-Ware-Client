@@ -5,6 +5,7 @@ import '../pages/Profile.css'
 
 
 
+
 export default class ImgCarousel extends React.Component {
     constructor(props) {
         super(props);
@@ -36,11 +37,12 @@ export default class ImgCarousel extends React.Component {
 
     render() {
         return (
-            <Carousel className="image-carousel">
+
+            <Carousel className='image-carousel'>
                 {this.props.location.images.map((image, i) => {
                     return (
                         <Carousel.Item key={i}>
-                            <img className="location-image" src={image} alt={`${this.props.location.name} img ${i}`} onClick={() => this.imgModal(image)}/>
+                            <img className="location-image" src={image} alt={`${this.props.location.name} img ${i}`} onClick={() => this.imgModal(image)} />
                         </Carousel.Item>
                     )
                 })}
