@@ -5,10 +5,10 @@ import Modal from 'react-bootstrap/Modal';
 
 export default class UpdateLocation extends React.Component {
     constructor(props) {
-        super(props)
-        this.state = {
-            showModal: false,
-        }
+      super(props)
+      this.state = {
+          showModal: false,
+      }
     }
 
     handleOpen = () => {

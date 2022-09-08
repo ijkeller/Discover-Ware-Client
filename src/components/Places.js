@@ -8,10 +8,11 @@ import { useAuth0 } from '@auth0/auth0-react';
 function Places(props) {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
-  const [image, setImage] = useState('');
+  const [images, setImages] = useState([]);
   const [types, setTypes] = useState([]);
   const [lat, setLat] = useState(47.6180106);
   const [lng, setLng] = useState(-122.3516264);
+  const [placeId, setPlaceId] = useState('');
   const [autoComplete, setAutoComplete] = useState(null);
 
   const { getIdTokenClaims, isAuthenticated } = useAuth0();
@@ -25,18 +26,15 @@ function Places(props) {
       const place = autoComplete.getPlace();
       const newLat = place.geometry.location.lat();
       const newLng = place.geometry.location.lng();
-      let imageUrl;
-      try {
-        imageUrl = place.photos[0].getUrl();
-      } catch (error) {
-        imageUrl = '../assets/defaultPlaceImage.png'
-      }
-      setName(place.place_id);
-      setAddress(place.formatted_addres);
-      setImage(imageUrl);
+      let photos = place.photos.map(photo => photo.getUrl());
+      if (photos.length === 0) photos = ['../assets/defaultPlaceImage.png'];
+      setName(place.name);
+      setAddress(place.formatted_address);
+      setImages(photos);
       setTypes([...place.types]);
       setLat(newLat);
       setLng(newLng);
+      setPlaceId(place.place_id);
       props?.mapRef.panTo({lat: newLat, lng: newLng});
     } else {
       console.log('Autocomplete is not loaded yet!');
@@ -51,13 +49,24 @@ function Places(props) {
       } else {
         const res = await getIdTokenClaims();
         const token = res.__raw;
+        console.log(token);
         const config = {
           headers: { Authorization: `Bearer ${token}` },
           method: 'post',
           baseURL: process.env.REACT_APP_SERVER,
           url: '/place',
-          data: {name, address, image, types, lat, lng}
+          data: {
+            name,
+            address,
+            images,
+            types,
+            lat,
+            lng,
+            place_id: placeId
+          }
         };
+        console.log('place id:', placeId);
+        console.log(config);
         const postResponse = await axios(config);
         console.log('postResponse.data: ', postResponse.data);
       }
