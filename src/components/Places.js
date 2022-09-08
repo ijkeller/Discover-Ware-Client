@@ -22,14 +22,12 @@ class Places extends Component {
   }
 
   onLoad = (autocomplete) => {
-    // console.log('autocomplete: ', autocomplete);
     this.autocomplete = autocomplete;
   }
 
   onPlaceChanged = () => {
     if (this.autocomplete !== null) {
       const place = this.autocomplete.getPlace();
-      // console.log(place);
       this.setState({
         place_id: place.place_id,
         name: place.name,
@@ -49,10 +47,20 @@ class Places extends Component {
   savePlace = async () => {
     try {
       if (this.state.name === '') {
+        console.log("state is not defined yet");
         return undefined;
       } else {
-        const placeBaseURL = `${process.env.REACT_APP_SERVER}/place`;
-        await axios.post(placeBaseURL, this.state);
+        const res = await this.props.auth0.getIdTokenClaims();
+        const token = res.__raw;
+        const config = {
+          headers: { Authorization: `Bearer ${token}` },
+          method: 'post',
+          baseURL: process.env.REACT_APP_SERVER,
+          url: '/place',
+          data: this.state
+        }
+        const postResponse = await axios(config);
+        console.log('postResponse.data: ', postResponse.data);
       }
     } catch (error) {
       console.log('Error in savePlace', error);
