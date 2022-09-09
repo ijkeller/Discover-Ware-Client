@@ -16,7 +16,7 @@ class Header extends Component {
   render() {
     return (
       <header className='Header'>
-        <h2>DiscoverWare</h2>
+        <h2><a href="/" className="siteName">DiscoverWare</a></h2>
         <Places mapRef={this.props.mapRef} libraries={this.props.libraries}
           placesIsEnabled={this.props.placesIsEnabled}
         />

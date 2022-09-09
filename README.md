@@ -53,11 +53,11 @@
 
 # Previous Ideas:
 - A representation of our pitches and brainstorming
-        ![ideas](./images/pitchimage.jpg)
+        ![ideas](./public/images/pitchimage.jpg)
 
 # Data Flow
 - Describe the flow of data in your application:
-        ![dataflow](./images/flowdata.jpg)
+        ![dataflow](./public/images/flowdata.jpg)
 
 **Authors**:
     - Branden Ge
