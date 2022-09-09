@@ -137,7 +137,7 @@ class Profile extends Component {
                           <ImgCarousel location={location} />
                         </div>
                         <Link to="/">
-                          <Button onClick={() => this.handleGoToLocation(location)} size="sm" variant="primary" >
+                          <Button className="button go-to-button" onClick={() => this.handleGoToLocation(location)} size="sm" variant="primary" >
                             Go To Location
                           </Button>
                         </Link>
