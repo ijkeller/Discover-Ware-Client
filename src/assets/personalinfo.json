@@ -1,11 +1,5 @@
 [
-    {
-        "personName": "Branden Ge",
-        "personData": "Software engineer and Marine Corps veteran passionate about creating amazing user and community experiences, and making an impact in the areas of automation, education, entrepreneurship, writing, and games.",
-        "personImg": "./images/branden.jpeg",
-        "github": "https://github.com/brandenge",
-        "linkedin": "https://www.linkedin.com/in/branden-ge/"
-    },
+    
     {
         "personName": "Jacob Dang",
         "personData": "Formerly self-taught and currently a full stacked developer through Code Fellows intermediate software program.",
@@ -14,17 +8,24 @@
         "linkedin": "https://www.linkedin.com/in/jacob-dang-a19210209"
     },
     {
-        "personName": "Isaiah Keller",
-        "personData": "Software Developer with a goal-oriented determination focused on bringing your ideas to the web. I enjoy puzzles and challenges, and I look forward to bringing my varying skillset to your next project.",
-        "personImg": "./images/isaiah.jpg",
-        "github": "https://github.com/ijkeller",
-        "linkedin": "https://www.linkedin.com/in/isaiahkeller/"
-    },
-    {
         "personName": "Tim Traylor",
         "personData": "Developed a passion for learning new skills and diving into the details with my team. I am excited to continue my journey in full stack Javascript and see where it leads.",
         "personImg": "./images/tray-profile-pic.jpg",
         "github": "https://github.com/ttraylor310",
         "linkedin": "https://www.linkedin.com/in/ttraylor310"
+    },
+    {
+        "personName": "Branden Ge",
+        "personData": "Software engineer and Marine Corps veteran passionate about creating amazing user and community experiences, and making an impact in the areas of automation, education, entrepreneurship, writing, and games.",
+        "personImg": "./images/branden.jpeg",
+        "github": "https://github.com/brandenge",
+        "linkedin": "https://www.linkedin.com/in/branden-ge/"
+    },
+    {
+        "personName": "Isaiah Keller",
+        "personData": "Software Developer with a goal-oriented determination focused on bringing your ideas to the web. I enjoy puzzles and challenges, and I look forward to bringing my varying skillset to your next project.",
+        "personImg": "./images/isaiah.jpg",
+        "github": "https://github.com/ijkeller",
+        "linkedin": "https://www.linkedin.com/in/isaiahkeller/"
     }
 ]
