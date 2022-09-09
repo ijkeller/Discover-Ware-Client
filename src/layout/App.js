@@ -50,7 +50,7 @@ class App extends Component {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       }
-    }, () => console.log('App state: ', this.state));
+    });
   }
 
   getPosition = () => {
