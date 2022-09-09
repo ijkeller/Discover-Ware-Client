@@ -20,6 +20,7 @@ function MapContainer(props) {
   const getMarkers = async () => {
     try {
       const res = await getIdTokenClaims();
+      if (!res) return;
       const token = res.__raw;
       const config = {
         headers: { Authorization: `Bearer ${token}` },
