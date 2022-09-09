@@ -21,6 +21,7 @@ export default class UpdateLocation extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        console.log('handleSubmit')
         let locationToUpdate = {
             _id: this.props.location._id,
             name: this.props.location.name,
@@ -65,15 +66,13 @@ export default class UpdateLocation extends React.Component {
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group className="mb-3" controlId="notes">
                                 <Form.Control as="textarea" type="text" placeholder='Edit Notes' defaultValue={this.props.location.notes} />
+                                <div className='update-button-group' >
+                                    <Button className="button update-button" size="sm" variant="secondary" type="submit" >Add Note</Button>
+                                    <Button className="button delete-button" size="sm" variant="danger" onClick={this.handleDelete} >Delete Note</Button>
+                                </div>
                             </Form.Group>
                         </Form>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <div className='modal-footer-contents' >
-                            <Button className="button update-button" size="sm" variant="secondary" type="submit" >Add Note</Button>
-                            <Button className="button delete-button" size="sm" variant="danger" onClick={this.handleDelete} >Delete Note</Button>
-                        </div>
-                    </Modal.Footer>
                 </Modal>
             </>
         )

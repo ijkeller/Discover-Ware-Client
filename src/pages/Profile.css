@@ -100,8 +100,9 @@
     margin: 0 !important;
 }
 
-.modal-footer-contents {
-    margin: 0 auto !important;
+.update-button-group {
+    width: fit-content;
+    margin: 1rem auto 0 !important;
 }
 
 .image-list {

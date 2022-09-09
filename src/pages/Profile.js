@@ -68,6 +68,7 @@ class Profile extends Component {
   }
 
   handleUpdate = async (locationToUpdate) => {
+    console.log('handleUpdate')
     try {
       const res = await this.props.auth0.getIdTokenClaims();
       const token = res.__raw;
