@@ -18,12 +18,25 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      placesIsEnabled: false,
       mapRef: null,
       center: {
         lat: undefined,
         lng: undefined
       },
     }
+  }
+
+  enablePlaces = () => {
+    this.setState({
+      placesIsEnabled: true
+    });
+  }
+
+  disablePlaces = () => {
+    this.setState({
+      placesIsEnabled: false
+    });
   }
 
   getMapRef = (mapRef) => {
@@ -47,6 +60,7 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
+    this.enablePlaces();
     await this.centerCurrentPosition();
   }
 
@@ -54,20 +68,21 @@ class App extends Component {
     return (
       <>
         <Router>
-          <Header mapRef={this.state.mapRef} libraries={App.libraries} />
+          <Header mapRef={this.state.mapRef} libraries={App.libraries} placesIsEnabled={this.state.placesIsEnabled} />
           <Routes>
             <Route
               exact path="/"
-              element={<Map center={this.state.center} getMapRef={this.getMapRef} />}
+              element={<Map center={this.state.center} getMapRef={this.getMapRef} libraries={App.libraries}
+              enablePlaces={this.enablePlaces} />}
             >
             </Route>
             <Route
               exact path="/profile"
-              element={<Profile />} >
+              element={<Profile disablePlaces={this.disablePlaces} />} >
             </Route>
             <Route
               exact path="/about"
-              element={<About />} >
+              element={<About disablePlaces={this.disablePlaces} />} >
             </Route>
           </Routes>
         </Router>

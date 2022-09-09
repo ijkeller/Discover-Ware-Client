@@ -6,6 +6,10 @@ import { Icon } from '@iconify/react';
 
 class About extends Component {
 
+  componentDidMount = () => {
+    this.props.disablePlaces();
+  }
+
   render() {
     return (
       <>

@@ -17,7 +17,9 @@ class Header extends Component {
     return (
       <header className='Header'>
         <h2>DiscoverWare</h2>
-        <Places mapRef={this.props.mapRef} libraries={this.props.libraries} />
+        <Places mapRef={this.props.mapRef} libraries={this.props.libraries}
+          placesIsEnabled={this.props.placesIsEnabled}
+        />
         <Navbar expand="lg" variant="secondary">
           <Container>
             <Nav>
