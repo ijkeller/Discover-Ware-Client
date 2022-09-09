@@ -25,7 +25,7 @@ export default class UpdateLocation extends React.Component {
             _id: this.props.location._id,
             name: this.props.location.name,
             address: this.props.location.address,
-            notes: e.target.notes.value || this.props.location.notes,
+            notes: e.target.notes.value || this.props.location.notes ,
             images: this.props.location.images,
             types: this.props.location.types,
             lat: this.props.location.lat,
@@ -34,6 +34,7 @@ export default class UpdateLocation extends React.Component {
             __v: this.props.location.__v
         }
         this.props.handleUpdate(locationToUpdate)
+        this.handleClose()
     }
 
     render() {
@@ -46,9 +47,9 @@ export default class UpdateLocation extends React.Component {
                     <Modal.Body>
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group className="mb-3" controlId="notes">
-                                <Form.Control type="text" placeholder='Edit Notes' />
+                                <Form.Control as="textarea" type="text" placeholder='Edit Notes' defaultValue={this.props.location.notes} />
                             </Form.Group>
-                            <Button className="button update-button" variant="secondary" type="submit" onClick={this.handleClose} >Add Note</Button>
+                            <Button className="button update-button" variant="secondary" type="submit" >Add Note</Button>
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>

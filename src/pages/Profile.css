@@ -42,6 +42,11 @@
     padding: 5px;
 }
 
+.notes {
+    width: 60%;
+    margin-left: 2rem;
+}
+
 .carousel-container {
     position: absolute !important;
     border-radius: 0.5rem;
@@ -52,13 +57,11 @@
 }
 
 .image-carousel {
-
     justify-self: center !important;
     align-self: center !important;
     border-radius: 0.5rem;
     width: 20rem !important;
     height: 11rem !important;
-    /* border: 1px solid black; */
     overflow-y: hidden;
 }
 
@@ -78,4 +81,19 @@
     width: 100% !important;
     max-width: 97vw !important;
     margin: 0 !important;
+}
+
+.image-list {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    list-style: none;
+    justify-content: space-around;
+    gap: 3px;
+    overflow-x: scroll;
+}
+
+.image-item {
+    max-height: 7rem;
+    width: auto;
 }

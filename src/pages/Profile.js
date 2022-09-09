@@ -129,13 +129,15 @@ class Profile extends Component {
                       <div className="favorites-card" key={idx} >
                         <h3 className="location-name">{location.name}</h3>
                         <h4 className="address" >{location.address}</h4>
-                        <p className="notes" >Notes: {location.notes}</p>
+                        <div className="notes-title" >Notes:
+                            <p className="notes">{location.notes}</p>
+                        </div>
                         <p className="types" >Type: {location.types.join(', ')} </p>
                         <div className="carousel-container" >
                           <ImgCarousel location={location} />
                         </div>
-                          <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
-                          <Button className="button delete-button" onClick={() => this.handleDelete(location)} size="sm" variant="danger" >Delete Location</Button>
+                        <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
+                        <Button className="button delete-button" onClick={() => this.handleDelete(location)} size="sm" variant="danger" >Delete Location</Button>
                       </div>
                     )
                   })
