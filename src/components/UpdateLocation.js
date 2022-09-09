@@ -49,7 +49,7 @@ export default class UpdateLocation extends React.Component {
                             <Form.Group className="mb-3" controlId="notes">
                                 <Form.Control as="textarea" type="text" placeholder='Edit Notes' defaultValue={this.props.location.notes} />
                             </Form.Group>
-                            <Button className="button update-button" variant="secondary" type="submit" >Add Note</Button>
+                            <Button className="button update-button" size="sm" variant="secondary" type="submit" >Add Note</Button>
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
