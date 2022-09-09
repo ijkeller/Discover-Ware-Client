@@ -3,9 +3,16 @@
 }
 
 .sign-in {
+    display: grid;
+    justify-content: center;
+    width:40%;
+    height: 40%;
     background-color: rgba(245, 245, 245, 0.8);
     margin: auto;
+    margin-top: 30vh;
+    padding: 2rem;
     border-radius: 0.5rem;
+    gap: 1rem;
 }
 
 .profile-container {

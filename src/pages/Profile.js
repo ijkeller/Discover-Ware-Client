@@ -136,13 +136,13 @@ class Profile extends Component {
                         <div className="carousel-container" >
                           <ImgCarousel location={location} />
                         </div>
-                        <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
-                        <Button className="button delete-button" onClick={() => this.handleDelete(location)} size="sm" variant="danger">Delete Location</Button>
                         <Link to="/">
-                          <Button onClick={() => this.handleGoToLocation(location)}>
+                          <Button onClick={() => this.handleGoToLocation(location)} size="sm" variant="primary" >
                             Go To Location
                           </Button>
                         </Link>
+                        <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
+                        <Button className="button delete-button" onClick={() => this.handleDelete(location)} size="sm" variant="danger">Delete Location</Button>
                       </div>
                     )
                   })
