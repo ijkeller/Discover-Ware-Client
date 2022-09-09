@@ -7,6 +7,13 @@
         "linkedin": "https://www.linkedin.com/in/branden-ge/"
     },
     {
+        "personName": "Jacob Dang",
+        "personData": "Formerly self-taught and currently a full stacked developer through Code Fellows intermediate software program.",
+        "personImg": "./images/jacob.jpg",
+        "github":"https://github.com/JacobDangCS50",
+        "linkedin": "https://www.linkedin.com/in/jacob-dang-a19210209"
+    },
+    {
         "personName": "Isaiah Keller",
         "personData": "Software Developer with a goal-oriented determination focused on bringing your ideas to the web. I enjoy puzzles and challenges, and I look forward to bringing my varying skillset to your next project.",
         "personImg": "./images/isaiah.jpg",
@@ -14,15 +21,8 @@
         "linkedin": "https://www.linkedin.com/in/isaiahkeller/"
     },
     {
-        "personName": "Jacob Dang",
-        "personData": "Formerly self-taught and currently a full stacked developer through Code Fellows intermediate software program",
-        "personImg": "./images/jacob.jpg",
-        "github":"https://github.com/JacobDangCS50",
-        "linkedin": "https://www.linkedin.com/in/jacob-dang-a19210209"
-    },
-    {
         "personName": "Tim Traylor",
-        "personData": "Born in Los Angeles, grew up on a sailboat with my family, joined the Navy at 21, and haven't seen enough of the ocean! After 12 years as a nuclear electrician on submarines and 5 years with King County as an electrical & instrumentation supervisor, I have developed a passion for learning new skills and diving into the details with my team. I am excited to continue my journey in full stack Javascript and see where it leads.",
+        "personData": "Developed a passion for learning new skills and diving into the details with my team. I am excited to continue my journey in full stack Javascript and see where it leads.",
         "personImg": "./images/tray-profile-pic.jpg",
         "github": "https://github.com/ttraylor310",
         "linkedin": "https://www.linkedin.com/in/ttraylor310"

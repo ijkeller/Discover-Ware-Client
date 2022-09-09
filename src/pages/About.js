@@ -16,10 +16,9 @@ class About extends Component {
         <div className="about-container" >
           {Data.map((person, idx) => {
             return (
-              <>
                 <Card className="card" key={idx} >
                   <Card.Img variant="top" src={person.personImg} alt={`${person.personName} image`} />
-                  <Card.Body>
+                  <Card.Body className="cardBody">
                     <Card.Title className="title">{person.personName}</Card.Title>
                     <Card.Text className="bio">{person.personData}</Card.Text>
                     <Card.Link href={person.linkedin} className="linkedin">
@@ -30,7 +29,7 @@ class About extends Component {
                     </Card.Link>
                   </Card.Body>
                 </Card>
-              </>)
+              )
           })}
         </div>
         <div className="abouPage">
