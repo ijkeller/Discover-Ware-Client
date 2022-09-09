@@ -85,6 +85,10 @@
     align-self: center !important;
 }
 
+.modal-title {
+    margin: 0 auto;
+}
+
 .modal-image {
     max-width: 100% !important;
     max-height: 100% !important;
@@ -94,6 +98,10 @@
     width: 100% !important;
     max-width: 97vw !important;
     margin: 0 !important;
+}
+
+.modal-footer-contents {
+    margin: 0 auto !important;
 }
 
 .image-list {
@@ -109,4 +117,8 @@
 .image-item {
     max-height: 7rem;
     width: auto;
+}
+
+.button {
+    margin: 0 0.2rem;
 }
