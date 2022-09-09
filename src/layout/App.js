@@ -43,13 +43,9 @@ class App extends Component {
     this.setState({mapRef});
   }
 
-  centerCurrentPosition = async () => {
-    const position = await this.getPosition();
+  setCenter = async (coords) => {
     this.setState({
-      center: {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      }
+      center: coords
     });
   }
 
@@ -61,28 +57,55 @@ class App extends Component {
 
   componentDidMount = async () => {
     this.enablePlaces();
-    await this.centerCurrentPosition();
+    const position = await this.getPosition();
+    this.setCenter({
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    });
   }
 
   render() {
     return (
       <>
         <Router>
-          <Header mapRef={this.state.mapRef} libraries={App.libraries} placesIsEnabled={this.state.placesIsEnabled} />
+          <Header
+            mapRef={this.state.mapRef}
+            libraries={App.libraries}
+            placesIsEnabled={this.state.placesIsEnabled}
+          />
           <Routes>
             <Route
               exact path="/"
-              element={<Map center={this.state.center} getMapRef={this.getMapRef} libraries={App.libraries}
-              enablePlaces={this.enablePlaces} />}
+              element={
+                <Map
+                  center={this.state.center}
+                  getMapRef={this.getMapRef}
+                  mapRef={this.state.mapRef}
+                  libraries={App.libraries}
+                  enablePlaces={this.enablePlaces}
+                />
+              }
             >
             </Route>
             <Route
               exact path="/profile"
-              element={<Profile disablePlaces={this.disablePlaces} />} >
+              element={
+                <Profile
+                  disablePlaces={this.disablePlaces}
+                  mapRef={this.state.mapRef}
+                  setCenter={this.setCenter}
+                />
+              }
+            >
             </Route>
             <Route
               exact path="/about"
-              element={<About disablePlaces={this.disablePlaces} />} >
+              element={
+                <About
+                  disablePlaces={this.disablePlaces}
+                />
+              }
+            >
             </Route>
           </Routes>
         </Router>

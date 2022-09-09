@@ -5,15 +5,13 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 function MapContainer(props) {
   const [markers, setMarkers] = useState([]);
+  let [lat, setLat] = useState(0);
+  let [lng, setLng] = useState(0);
 
   const mapStyles = {
     height: "93vh",
     width: "100%"
   };
-  const center = {
-    lat: props.center.lat || 47.6062095,
-    lng: props.center.lng || -122.3320708
-  }
 
   const { getIdTokenClaims, isAuthenticated } = useAuth0();
 
@@ -30,7 +28,6 @@ function MapContainer(props) {
       }
       const places = await axios(config);
       setMarkers(places.data.map(place => ({lat: place.lat, lng: place.lng})));
-      console.log('markers: ', markers);
     } catch (error) {
     console.error("Error in getMarkers: ", error);
     }
@@ -39,6 +36,11 @@ function MapContainer(props) {
   useEffect(() => {
     getMarkers();
   }, [isAuthenticated]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    setLat(props.center.lat || 47.6062095);
+    setLng(props.center.lng || -122.3320708);
+  }, [props.center.lat]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <LoadScript
@@ -49,7 +51,7 @@ function MapContainer(props) {
       <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={12}
-        center={center}
+        center={{lat, lng}}
         onLoad={map => {
           props.getMapRef(map);
           props.enablePlaces();

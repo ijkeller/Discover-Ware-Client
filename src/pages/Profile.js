@@ -6,6 +6,7 @@ import UpdateLocation from '../components/UpdateLocation.js';
 import Login from '../components/Login.js';
 import ImgCarousel from '../components/ImgCarousel';
 import './Profile.css';
+import { Link } from 'react-router-dom';
 
 const SERVER = process.env.REACT_APP_SERVER;
 
@@ -58,9 +59,6 @@ class Profile extends Component {
         url: '/place'
       }
       const getLocationData = await axios(config);
-      console.log('-------getLocationData.data------')
-      console.log(getLocationData.data)
-      console.log(getLocationData.data[0].images)
       this.setState({
         favoriteLocations: getLocationData.data
       })
@@ -80,9 +78,7 @@ class Profile extends Component {
         url: `/place/${locationToUpdate._id}`,
         data: locationToUpdate
       }
-      const updatedLocation = await axios(config);
-      console.log('updatedLocation: ');
-      console.table(updatedLocation);
+      await axios(config);
       this.getLocations(token);
 
     } catch (error) {
@@ -106,6 +102,10 @@ class Profile extends Component {
     } catch (error) {
       console.error('Error in handleDelete: ', error);
     }
+  }
+
+  handleGoToLocation = (location) => {
+    this.props.setCenter({lat: location.lat, lng: location.lng});
   }
 
   render() {
@@ -137,7 +137,12 @@ class Profile extends Component {
                           <ImgCarousel location={location} />
                         </div>
                         <UpdateLocation handleUpdate={this.handleUpdate} location={location} />
-                        <Button className="button delete-button" onClick={() => this.handleDelete(location)} size="sm" variant="danger" >Delete Location</Button>
+                        <Button className="button delete-button" onClick={() => this.handleDelete(location)} size="sm" variant="danger">Delete Location</Button>
+                        <Link to="/">
+                          <Button onClick={() => this.handleGoToLocation(location)}>
+                            Go To Location
+                          </Button>
+                        </Link>
                       </div>
                     )
                   })
