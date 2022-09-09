@@ -150,10 +150,10 @@ class Profile extends Component {
               </div>
             </div>
             :
-            <>
+            <div className="sign-in">
               <h1>Please Sign In</h1>
               <Login />
-            </>
+            </div>
         }
       </>
     );

@@ -2,6 +2,12 @@
     box-sizing: border-box !important;
 }
 
+.sign-in {
+    background-color: rgba(245, 245, 245, 0.8);
+    margin: auto;
+    border-radius: 0.5rem;
+}
+
 .profile-container {
     display: grid;
     grid-template-rows: 20% 80%;
