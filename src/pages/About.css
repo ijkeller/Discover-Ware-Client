@@ -1,13 +1,10 @@
-
-body{
+/* body{
     background: url(../../public/images/b-map-adj.jpg);
-}
-
-
+} */
 
 .about-container {
     display: grid !important;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: 50% 50%;
     gap: 2rem;
     margin: 1rem;

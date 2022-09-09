@@ -1,8 +1,8 @@
 import { Component } from "react";
 import Card from "react-bootstrap/Card";
-import Accordion from 'react-bootstrap/Accordion';
 import './About.css';
 import Data from '../assets/personalinfo.json';
+import { Icon } from '@iconify/react';
 
 class About extends Component {
 
@@ -17,24 +17,19 @@ class About extends Component {
           {Data.map((person, idx) => {
             return (
               <>
-                <Accordion>
-                  <Accordion.Item eventKey="0">
-                    <Accordion.Header>{person.personName}</Accordion.Header>
-                    <Accordion.Body>
-                      <Card className="card" key={idx} >
-                        <Card.Img variant="top" src={person.personImg} alt={`${person.personName} image`} />
-                        <Card.Body>
-                          <Card.Title className="title">{person.personName}</Card.Title>
-                          <Card.Text className="bio">{person.personData}</Card.Text>
-                        </Card.Body>
-                        <Card.Body>
-                          <Card.Link href={person.linkedin}>LinkedIn</Card.Link>
-                          <Card.Link href={person.github}>GitHub</Card.Link>
-                        </Card.Body>
-                      </Card>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
+                <Card className="card" key={idx} >
+                  <Card.Img variant="top" src={person.personImg} alt={`${person.personName} image`} />
+                  <Card.Body>
+                    <Card.Title className="title">{person.personName}</Card.Title>
+                    <Card.Text className="bio">{person.personData}</Card.Text>
+                    <Card.Link href={person.linkedin} className="linkedin">
+                      <Icon icon="logos:linkedin-icon" />
+                    </Card.Link>
+                    <Card.Link href={person.github} className="github">
+                      <Icon icon="icon-park:github" />
+                    </Card.Link>
+                  </Card.Body>
+                </Card>
               </>)
           })}
         </div>
