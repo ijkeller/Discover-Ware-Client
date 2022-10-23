@@ -41,7 +41,7 @@ export default class ImgCarousel extends React.Component {
                         )
                     })}
                 </Carousel>
-                <Modal size="lg" show={this.state.showModal} onHide={this.handleClose} centered className='modal' >
+                <Modal size="xl" show={this.state.showModal} onHide={this.handleClose} centered className='modal' >
                     <Modal.Header closeButton></Modal.Header>
                     <Modal.Body>
                         <img className="modal-image" src={this.state.image} alt={`${this.props.location.name} img`} />
