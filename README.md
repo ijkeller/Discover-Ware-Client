@@ -68,10 +68,10 @@
 - [DiscoveryChannel301](https://github.com/DiscoveryChannel301)
 
 **Git Repositories**:
-- [Front-End](https://github.com/DiscoveryChannel301/discoverware)
-- [Backend](https://github.com/DiscoveryChannel301/discoverware-api)
+- [Front-End](https://github.com/ijkeller/DiscoverWare-Client)
+- [Backend](https://github.com/ijkeller/DiscoverWare-API)
 
 **Deployed Links**:
-- [Netlify](https://discoverware.netlify.app/)
+- [Netlify](https://ijk-discoverware.netlify.app/)
 - [Heroku](https://discoverware-backend.herokuapp.com/)
 
