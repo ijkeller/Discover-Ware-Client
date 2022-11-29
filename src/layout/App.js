@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   getMapRef = (mapRef) => {
-    this.setState({mapRef});
+    this.setState({ mapRef });
   }
 
   setCenter = async (coords) => {
@@ -101,9 +101,7 @@ class App extends Component {
             <Route
               exact path="/about"
               element={
-                <About
-                  disablePlaces={this.disablePlaces}
-                />
+                <About disablePlaces={this.disablePlaces} />
               }
             >
             </Route>
