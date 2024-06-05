@@ -15,13 +15,13 @@
 - Nowadays our current environment encourages the practice of the home-body mentality. The pandemic has further pushed that agenda and for a while our community boundaries were confined in a single living space. Shifting that stay-at-home mentality from where we were only a few years ago is more difficult than any of us could've imagined. We seek to aleviate that with this app, that allows the user to explore what's around them.
 
 ## Semantics Versionings/Updates:
-- Version 1.0: Created front-end and developed a skeleton framework
-- Version 1.2: Created back-end and developed a skeleton framework
-- Version 1.5: Back-end now has CRUD features
-- Version 2.0: Front-end & Back-end implement an Auth0 feature
-- Version 2.2: Front and Back end debugs
-- Version 2.5: Front-end adds styling with Boostrap & CSS
-- Version 3.0: Final product
+- Version 0.1: Created front-end and developed a skeleton framework
+- Version 0.2: Created back-end and developed a skeleton framework
+- Version 0.3: Back-end now has CRUD features
+- Version 0.4: Front-end & Back-end implement an Auth0 feature
+- Version 0.5: Front and Back end debugs
+- Version 0.6: Front-end adds styling with Boostrap & CSS
+- Version 1.0: Final product
 
 
 ## Additional Resources:
